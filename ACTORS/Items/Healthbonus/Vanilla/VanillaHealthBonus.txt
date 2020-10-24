@@ -1,0 +1,14 @@
+ACTOR VanillaHealthBonus : Health
+{
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.Amount 1
+  Inventory.MaxAmount 200
+  Inventory.PickupMessage "$GOTHTHBONUS" // "Picked up a health bonus."
+  States
+  {
+  Spawn:
+    BON1 ABCDCB 6
+    Loop
+  }
+}

@@ -1,0 +1,162 @@
+// Health bonus -------------------------------------------------------------
+
+
+
+// Armor bonus --------------------------------------------------------------
+
+
+
+
+
+
+
+
+// Medikit -----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Green armor --------------------------------------------------------------
+
+
+
+// Blue armor ---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR GiveHealth : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 1
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "$GOTHTHBONUS"
+	States
+	{
+	Spawn:
+		BON1 AAABBBCCCDDDCCCBBB 2
+		Loop
+	}
+}
+
+// Armor bonus --------------------------------------------------------------
+
+Actor GiveArmor : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 1
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+		BON2 AAABBBCCCDDDCCCBBB 2
+		loop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR CrueltyBonus5health : Health
+{
+	Game Doom
+	SpawnID 152
+	-COUNTITEM
+	Radius 220
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 5
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 health ***"
+	States
+	{
+	Spawn:
+        TNT1 A 50
+		Stop
+	}
+}
+ACTOR CrueltyBonus5armor : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 152
+	-COUNTITEM
+	Radius 220
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 5
+	Armor.Maxsaveamount 9999
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 Armor ***"
+	States
+	{
+	Spawn:
+        TNT1 A 50
+		Stop
+	}
+}
+
+
+ACTOR CrueltyBonus15armor : CrueltyBonus5armor
+{
+	Armor.Saveamount 15
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +15 Armor ***"
+}
+
+ACTOR CrueltyBonus10armor : CrueltyBonus5armor
+{
+	Armor.Saveamount 10
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +10 Armor ***"
+}
+
+
+ACTOR CrueltyBonus1health : CrueltyBonus5health
+{
+	Inventory.Amount 1
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +1 Health ***"
+}

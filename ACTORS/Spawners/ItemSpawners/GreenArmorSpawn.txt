@@ -1,0 +1,33 @@
+Actor GreenArmorSpawner Replaces GreenArmor
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 0 A_SpawnItemEx("ZombieManPackSpawner",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+	Deciding:
+		TNT1 A 1
+		loop
+	DiceRandom:
+		TNT1 A 0 A_Jump(256, "Spawnv20bGreenArmor")
+		Stop
+	DiceProg:
+		DiceTier1:
+			TNT1 A 0 A_Jump(256, "Spawnv20bGreenArmor")
+		DiceTier2:
+			TNT1 A 0 A_Jump(256, "Spawnv20bGreenArmor")
+		DiceTier3:
+			TNT1 A 0 A_Jump(256, "Spawnv20bGreenArmor")
+		DiceTier4:
+			TNT1 A 0 A_Jump(256, "Spawnv20bGreenArmor")
+		Spawnv20bGreenArmor:
+			TNT1 A 0 A_SpawnItemEx("v20bLightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+			Stop
+		ReplaceVanilla:
+			TNT1 A 0 A_SpawnItemEx("VanillaGreenArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+			Stop
+	}
+}

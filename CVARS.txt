@@ -1,0 +1,349 @@
+#library "CVARS"
+#include "zcommon.acs"
+
+
+
+script "CMEInitalize" enter
+{
+    // Fade In
+	sethudsize(160, 90, TRUE);
+	setfont("BLASCR");
+	
+	if	(GameType () == GAME_SINGLE_PLAYER) 
+		{
+		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 0.1, 0.1, 0.1, 1.0);
+		}
+
+	//setfont("SmallFONT");
+	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
+		
+		
+	//===================	
+	//Sbar Type
+
+	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
+	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
+	
+	// Detect Player Gender
+		
+		
+	//if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+		//GiveInventory("GenderMale", 1);		
+
+	//if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+		//GiveInventory("GenderFemale", 1);	
+		
+	//===========================
+	
+	//Game compatibilities
+	//GiveInventory("LifeItem", 2); //Stronghold
+	
+	
+    //ClearInventory();
+    GiveInventory("CheckMarines", 1);
+}
+
+script "BDRespawn" Respawn NET
+{
+//Sbar Type
+
+	TakeInventory("sbartype1", 1);
+	TakeInventory("sbartype2", 1);
+	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
+	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
+}
+
+Script 799 (VOID)
+{
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("bd_bloodamount") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar("bd_bloodamount") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar("zdoombrutalblood") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar("bd_bloodamount") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+
+}
+
+Script 798 (VOID)
+{
+if	(GetCvar("bd_lowgraphicsmode") == 1) { GiveInventory("LowGraphicsMode", 1); }
+if	(GetCvar("zdoombrutaljanitor") == 1) { GiveInventory("LowGraphicsMode", 1); }
+}
+
+
+Script 797 (VOID)
+{
+if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"Vanish"); }
+if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"Vanish"); }
+}
+
+Script 795 (VOID)
+{
+if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+
+
+Script 719 (VOID)
+{
+if	(GameType () == GAME_NET_DEATHMATCH) 
+	SetActorState(0,"DM"); 
+}
+
+Script 728 (VOID)
+{
+if	(GetCvar("bd_nobulletpenetration") == 0) { TakeInventory("nopenetration", 1);}
+if	(GetCvar("bd_nobulletpenetration") == 1) { GiveInventory("nopenetration", 1);}
+if	(GetCvar("bd_shotgunstrap") == 1) { GiveInventory("useshotgunstrap", 1);}
+if	(GetCvar("zdoombd_shotgunstrap") == 1) { GiveInventory("useshotgunstrap", 1);}
+}
+
+script "StarterPackDynamicProgressionFix" (void) NET
+{
+	//Initialize variables
+    str LevelName = StrParam(n: PRINTNAME_LEVELNAME);
+	str LevelLump = StrParam(n: PRINTNAME_LEVEL);
+	//PrintBold(s:LevelName);
+	if(GetCvar("BrutalSpawnBalance") == 671)
+	{
+		//Episode I
+		if((StrCmp(LevelName, StrParam(s: "Hangar")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY01"))== 0))
+		{
+			SetActorState(0, "DiceTier1");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Nukage Processing")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY02"))== 0))
+		{
+			SetActorState(0, "DiceTier1");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Communications Center")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY03"))== 0))
+		{
+			SetActorState(0, "DiceTier1");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Life Support Facility")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY04"))== 0))
+		{
+			SetActorState(0, "DiceTier1");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Marine HQ")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY05"))== 0))
+		{
+			SetActorState(0, "DiceTier1");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Nuclear Power Plant")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY06"))== 0))
+		{
+			SetActorState(0, "DiceTier2");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Staging Area")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY07"))== 0))
+		{
+			SetActorState(0, "DiceTier2");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Lab Complex Entrance")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY08"))== 0))
+		{
+			SetActorState(0, "DiceTier2");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Bio Labs")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY09"))== 0))
+		{
+			SetActorState(0, "DiceTier2");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Portal Testing Labs")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY10"))== 0))
+		{
+			SetActorState(0, "DiceTier2");
+		}
+		
+		//Episode II
+		if((StrCmp(LevelName, StrParam(s: "Return to Earth")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY11"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Roadblocks")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY12"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Industrial District")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY13"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Warzone")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY14"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Twisted Neighborhood")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY15"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Dead Streets")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY16"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Final Destination")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY17"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Eye of the Storm")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY18"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY19"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		if((StrCmp(LevelName, StrParam(s: "The Tower")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY20"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		
+		//Episode III
+		if((StrCmp(LevelLump, StrParam(s: "EDAY21"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Blood Swamp")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY22"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Stronghold")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY23"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelName, StrParam(s: "House of the Hell Nobles")) == 0) && (StrCmp(LevelLump, StrParam(s: "EDAY24"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY25"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY26"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY27"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY28"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY29"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		if((StrCmp(LevelLump, StrParam(s: "EDAY30"))== 0))
+		{
+			SetActorState(0, "DiceTier4");
+		}
+		
+		//Secret Levels (Nazi map not necessary)
+		if((StrCmp(LevelLump, StrParam(s: "EDAY31"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		
+		if((StrCmp(LevelLump, StrParam(s: "EDAY32"))== 0))
+		{
+			SetActorState(0, "DiceTier3");
+		}
+		
+		//For the Valiant megawad
+		if((StrCmp(LevelName, StrParam(s: "The Eagle Has Landed")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP25"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Blast Wave")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP26"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Rocket Zone II")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP27"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "A Lightbridge Too Far")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP28"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Red Shift")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP29"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Electric Nightmare")) == 0) && (StrCmp(LevelLump, StrParam(s: "MAP30"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		
+		//For KDiZD
+		if((StrCmp(LevelName, StrParam(s: "Hangar")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M1"))== 0))
+		{
+			SetActorState(0, "EarlyLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Nuclear Plant")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M2"))== 0))
+		{
+			SetActorState(0, "EarlyLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Toxin Refinery")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M3"))== 0))
+		{
+			SetActorState(0, "LowLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Command Control")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M4"))== 0))
+		{
+			SetActorState(0, "LowLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Phobos Lab")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M5"))== 0))
+		{
+			SetActorState(0, "LowLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Central Processing")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M6"))== 0))
+		{
+			SetActorState(0, "MidLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Computer Station")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M7"))== 0))
+		{
+			SetActorState(0, "MidLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Phobos Anomaly")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M8"))== 0))
+		{
+			SetActorState(0, "MidLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Military Base")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M9"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+		if((StrCmp(LevelName, StrParam(s: "Penultimate Evil")) == 0) && (StrCmp(LevelLump, StrParam(s: "Z1M10"))== 0))
+		{
+			SetActorState(0, "HighLevelSpawn");
+		}
+	}
+}

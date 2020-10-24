@@ -1,0 +1,3 @@
+STARTUPTITLE = "Brutal DOOM Combined Mods Edition Test"
+STARTUPCOLORS = "FF00FF", "000000"
+NoRandomPlayerClass = True

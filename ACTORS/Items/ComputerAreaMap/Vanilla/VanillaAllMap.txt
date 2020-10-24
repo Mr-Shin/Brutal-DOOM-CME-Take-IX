@@ -1,0 +1,15 @@
+ACTOR VanillaAllmap : MapRevealer
+{
+  +COUNTITEM
+  +INVENTORY.FANCYPICKUPSOUND
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 0
+  Inventory.PickupSound "misc/p_pkup"
+  Inventory.PickupMessage "$GOTMAP" // "Computer Area Map"
+  States
+  {
+  Spawn:
+    PMAP ABCDCB 6 Bright
+    Loop
+  }
+}

@@ -1,0 +1,16 @@
+ACTOR VanillaGreenArmor : BasicArmorPickup
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "$GOTARMOR" // "Picked up the armor."
+  Inventory.Icon "ARM1A0"
+  Armor.SavePercent 33.335
+  Armor.SaveAmount 100
+  States
+  {
+  Spawn:
+    ARM1 A 6
+    ARM1 B 7 Bright
+    Loop
+  }
+}

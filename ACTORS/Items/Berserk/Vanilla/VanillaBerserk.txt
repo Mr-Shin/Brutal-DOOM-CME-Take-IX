@@ -1,0 +1,18 @@
+ACTOR VanillaBerserk : CustomInventory
+{
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.PickupMessage "$GOTBERSERK" // "Berserk!"
+  Inventory.PickupSound "misc/p_pkup"
+  States
+  {
+  Spawn:
+    PSTR A -1
+    Stop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("PowerStrength")
+    TNT1 A 0 HealThing(100, 0)
+    TNT1 A 0 A_SelectWeapon("Fist")
+    Stop
+  }
+}

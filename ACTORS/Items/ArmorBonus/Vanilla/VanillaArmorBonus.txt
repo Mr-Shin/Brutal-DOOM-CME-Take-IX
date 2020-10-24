@@ -1,0 +1,18 @@
+ACTOR VanillaArmorBonus : BasicArmorBonus
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "$GOTARMBONUS" // "Picked up an armor bonus."
+  Inventory.Icon "ARM1A0"
+  Armor.SavePercent 33.335
+  Armor.SaveAmount 1
+  Armor.MaxSaveAmount 200
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  States
+  {
+  Spawn:
+    BON2 ABCDCB 6
+    Loop
+  }
+}

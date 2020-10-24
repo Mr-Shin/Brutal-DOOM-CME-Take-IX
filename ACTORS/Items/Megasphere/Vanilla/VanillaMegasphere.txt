@@ -1,0 +1,17 @@
+ACTOR VanillaMegasphere : CustomInventory
+{
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.PickupMessage "$GOTMSPHERE" // "MegaSphere!"
+  Inventory.PickupSound "misc/p_pkup"
+  States
+  {
+  Spawn:
+    MEGA ABCD 6 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1)
+    TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
+    Stop
+  }
+}

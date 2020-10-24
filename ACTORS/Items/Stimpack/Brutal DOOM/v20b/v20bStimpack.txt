@@ -1,0 +1,14 @@
+ACTOR v20bStimpack : Health
+{
+	Game Doom
+	SpawnID 23
+	Inventory.Amount 10
+	Inventory.PickupMessage "$GOTSTIM"
+	States
+	{
+	Spawn:
+		STIM A 2
+		STIM A -1
+		Stop
+	}
+}

@@ -1,0 +1,27 @@
+
+Actor IsPlayingAsv21Doomer : Inventory
+{
+inventory.maxamount 1
+}
+
+
+ACTOR v21Doomer : Doomer
+{
+	Speed 1.0
+	Player.DisplayName "Brutal DOOM v21 Rifle Start"
+	Player.StartItem "Melee_Attacks"
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsPlayingAsv21Doomer", 1
+	Player.JumpZ 7.4
+	Player.CrouchSprite "PLYC"
+	Player.WeaponSlot 1, Melee_Attacks
+	Player.WeaponSlot 2, Nothing
+	Player.WeaponSlot 3, Nothing
+	Player.WeaponSLot 4, Nothing
+	Player.WeaponSlot 5, Nothing
+	Player.WeaponSlot 6, Nothing
+	Player.WeaponSlot 7, Nothing
+	Player.WeaponSlot 8, Nothing
+	Player.WeaponSlot 9, Nothing
+	Player.WeaponSlot 0, Nothing
+}
