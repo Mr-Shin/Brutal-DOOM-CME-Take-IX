@@ -57,6 +57,21 @@ states
 	}
 }
 
+Actor BFGBigFlare : Flare_General
+{
+alpha 0.1
+yscale 1.6
+xscale 1.6
+states
+	{
+	Spawn:
+		LEYS GGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEIn(0.02)
+	    LEYS G 5 BRIGHT
+		LEYS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEouT(0.04)
+		Stop
+	}
+}
+
 Actor BlueFlare : Flare_General
 {
 states
@@ -150,9 +165,19 @@ Actor YellowFlareLarge1X : YellowFlare
 scale 1.0
 }
 
+Actor YellowFlareArmor : YellowFlare
+{
+scale 0.25
+}
+
+
 Actor RedFlareMedium : RedFlare
 {
 scale 0.25
+}
+Actor RedFlareArmor : RedFlare
+{
+scale 0.3
 }
 
 

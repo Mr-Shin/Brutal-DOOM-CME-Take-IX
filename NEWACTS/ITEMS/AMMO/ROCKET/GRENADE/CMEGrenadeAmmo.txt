@@ -1,0 +1,35 @@
+ACTOR CMEGrenadeAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Grenade."
+	Inventory.Amount 1
+	Inventory.MaxAmount 25
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 50
+	Inventory.Icon "GRNDA"
+	Inventory.PickupSound "40MMGR"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
+
+
+ACTOR CMEGrenadeBox : CMEGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Grenades."
+	Inventory.Amount 10
+	Inventory.PickupSound "40MMGR"
+	Scale 1.0
+	States
+	{
+	Spawn:
+		GBOX A -1
+		Stop
+	}
+}

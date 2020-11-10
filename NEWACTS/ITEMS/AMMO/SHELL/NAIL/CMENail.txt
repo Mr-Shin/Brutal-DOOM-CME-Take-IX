@@ -1,0 +1,41 @@
+////=======================================================================
+////
+////								Nails
+////
+////=======================================================================
+
+ACTOR CMENailAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 2 nails."
+	Inventory.Amount 2
+	Inventory.MaxAmount 400
+	Ammo.BackpackAmount 2
+	scale 0.7
+	inventory.pickupsound "nail/pkup"
+	Ammo.BackpackMaxAmount 800
+	Inventory.Icon "NAILA0"
+	States
+	{
+	Spawn:
+		NAIL A -1
+		Stop
+	}
+}
+
+
+ACTOR CMENailBox : CMENailAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Nails."
+	Inventory.Amount 50
+	inventory.pickupsound "nail/pkup"
+	States
+	{
+	Spawn:
+		NBOX A -1
+		Stop
+	}
+}

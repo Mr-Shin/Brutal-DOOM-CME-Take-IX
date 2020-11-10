@@ -35,6 +35,12 @@ seesound "weapons/minigunfire"
 damagetype Cutless
 }
 
+Actor DecorativeTracer: Tracer
+{
+//-DONTSPLASH
+//seesound "weapons/minigunfire"
+//damagetype Minigun
+}
 
 
 Actor MonsterTracer: Tracer

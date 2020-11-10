@@ -1,0 +1,64 @@
+//Weapons
+#include "NEWACTS/Spawners/WeaponSpawners/ChainsawSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/ShotgunSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/SuperShotgunSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/ChaingunSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/RocketLauncherSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/PlasmaRifleSpawner.txt"
+#include "NEWACTS/Spawners/WeaponSpawners/BFG9000Spawner.txt"
+//Items
+#include "NEWACTS/Spawners/ItemSpawners/BlurSphereSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/RadSuitSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/InvulnerabilitySpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/SoulSphereSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/MegasphereSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/BerserkSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/BackpackSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/AllMapSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/InfraredSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/KeySpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/GreenArmorSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/BlueArmorSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/ArmorBonusSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/HealthBonusSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/StimpackSpawner.txt"
+#include "NEWACTS/Spawners/ItemSpawners/MedikitSpawner.txt"
+//Ammo
+#include "NEWACTS/Spawners/AmmoSpawners/ClipSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/ClipBoxSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/ShellSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/ShellBoxSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/RocketAmmoSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/RocketBoxSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/CellSpawner.txt"
+#include "NEWACTS/Spawners/AmmoSpawners/CellPackSpawner.txt"
+//Monsters
+#include "NEWACTS/Spawners/MonsterSpawners/ZombieManSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/ShotgunGuySpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/ChaingunGuySpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/DoomImpSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/DemonSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/SpectreSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/CacodemonSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/PainElementalSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/LostSoulSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/ArachnotronSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/FatsoSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/RevanantSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/HellKnightSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/BaronOfHellSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/ArchVileSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/SpiderMastermindSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/CyberdemonSpawner.txt"
+#include "NEWACTS/Spawners/MonsterSpawners/WolfensteinSSSpawner.txt"
+
+
+
+
+
+
+
+
+
+
+

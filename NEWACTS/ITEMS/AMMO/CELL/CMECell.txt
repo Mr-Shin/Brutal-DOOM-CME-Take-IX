@@ -1,0 +1,108 @@
+ACTOR CMECell : Ammo 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a Cell."
+	Inventory.Amount 20
+	Inventory.MaxAmount 750
+	Ammo.BackpackAmount 20
+	Ammo.BackpackMaxAmount 1500
+	Inventory.Icon "CELLC0"
+	inventory.pickupsound "CELL1"
+	States
+	{
+	Spawn:
+		CELL ABCDE 2
+		Loop
+	}
+}
+
+ACTOR CMECell2 : CMECell
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a charged Cell."
+	Inventory.Amount 40
+	inventory.pickupsound "CELL1"
+	States
+	{
+	Spawn:
+		CELL F -1
+		Stop
+	}
+}
+
+ACTOR CMECell3 : CMECell
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a Cell."
+	Inventory.Amount 30
+	inventory.pickupsound "CELL1"
+	States
+	{
+	Spawn:
+		CELL G -1
+		Stop
+	}
+}
+
+ACTOR CMECellPack : CMECell 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a Cell Pack."
+	Inventory.Amount 50
+	inventory.pickupsound "cell/pkup"
+	States
+	{
+	Spawn:
+		CELP ABCD 2
+		Loop
+	}
+}
+
+ACTOR CMECellPack2 : CMECell
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a Cell Pack."
+	Inventory.Amount 75
+	inventory.pickupsound "cell/pkup"
+	States
+	{
+	Spawn:
+		CELP E -1
+		Stop
+	}
+}
+
+ACTOR CMECellPack3 : CMECell
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a Charged Cell Pack."
+	Inventory.Amount 150
+	inventory.pickupsound "cell/pkup"
+	States
+	{
+	Spawn:
+		CELP F -1
+		Stop
+	}
+}
+
+ACTOR CMECellPack4 : CMECell
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a Cell Pack."
+	Inventory.Amount 100
+	inventory.pickupsound "cell/pkup"
+	States
+	{
+	Spawn:
+		CELP G -1
+		Stop
+	}
+}

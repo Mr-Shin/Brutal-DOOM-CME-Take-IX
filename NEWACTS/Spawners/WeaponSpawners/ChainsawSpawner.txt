@@ -1,0 +1,45 @@
+//Base class for item spawning, so they respawn as intended -TDRR
+Actor CMEItemSpawner : Inventory
+{
+Inventory.PickupMessage ""
+Inventory.PickupSound ""
+states
+	{
+	Waiting:
+	TNT1 A -1
+	Stop
+	}
+}
+
+
+
+
+Actor ChainSawSpawner : CMEItemSpawner replaces Chainsaw
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+	Deciding:
+		TNT1 A 1
+		loop
+	DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnChainsaw")
+		Stop	
+	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
+		DiceTier1:
+		TNT1 A 0 A_Jump(256, "SpawnChainsaw")
+		DiceTier2:
+		TNT1 A 0 A_Jump(256, "SpawnChainsaw")
+		DiceTier3:
+		TNT1 A 0 A_Jump(256, "SpawnChainsaw")
+		DiceTier4:
+		TNT1 A 0 A_Jump(256, "SpawnChainsaw")
+	SpawnChainsaw:
+		TNT1 A 0 A_SpawnItemEx("DropedChainsaw",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	}
+}

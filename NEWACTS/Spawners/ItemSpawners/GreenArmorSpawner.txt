@@ -1,0 +1,29 @@
+Actor GreenArmorSpawner : CMEItemSpawner Replaces GreenArmor
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+	Deciding:
+		TNT1 A 1
+		loop
+	DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		Stop	
+	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
+		DiceTier1:
+		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		DiceTier2:
+		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		DiceTier3:
+		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		DiceTier4:
+		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+	SpawnGreenArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedLightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	}
+}

@@ -1,0 +1,81 @@
+ACTOR CMEAPBulletAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a box of Armor Piercing Bullets."
+	Inventory.Amount 30
+	Inventory.MaxAmount 600
+	Ammo.BackpackAmount 30
+	inventory.pickupsound "CBOXPKUP"
+	Ammo.BackpackMaxAmount 1200
+	Inventory.Icon "ABOXB0"
+	States
+	{
+	Spawn:
+		ABOX A -1
+		Stop
+	}
+}
+
+ACTOR CMEAPChain : CMEAPBulletAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a chain of Armor Piercing Bullets."
+	Inventory.Amount 75
+	inventory.pickupsound "CBOXPKUP"
+	States
+	{
+	Spawn:
+		ABOX D -1
+		Stop
+	}
+}
+
+ACTOR CMEAPBox1 : CMEAPBulletAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Armor Piercing Bullets."
+	Inventory.Amount 125
+	inventory.pickupsound "CBOXPKUP"
+	scale 0.75
+	States
+	{
+	Spawn:
+		ABOX B -1
+		Stop
+	}
+}
+
+ACTOR CMEAPBox2 : CMEAPBulletAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Armor Piercing Bullets."
+	Inventory.Amount 100
+	inventory.pickupsound "CBOXPKUP"
+	Scale 0.5
+	States
+	{
+	Spawn:
+		ABOX C -1
+		Stop
+	}
+}
+
+ACTOR CMEAPBox3 : CMEAPBulletAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Armor Piercing Bullets."
+	Inventory.Amount 50
+	inventory.pickupsound "CBOXPKUP"
+	States
+	{
+	Spawn:
+		ABOX E -1
+		Stop
+	}
+}
+

@@ -1,0 +1,541 @@
+
+Actor EnemyMemory : Inventory
+{
+inventory.maxamount 60
+}
+
+Actor CantFire : Inventory
+{
+inventory.maxamount 1
+}
+Actor sbartype1 : Inventory {+INVENTORY.UNDROPPABLE inventory.maxamount 1}
+
+Actor sbartype2 : Inventory {+INVENTORY.UNDROPPABLE inventory.maxamount 1}
+
+Actor LookingForPlayer : Inventory
+{
+inventory.maxamount 30
+}
+
+Actor BrutalCounter : Inventory
+{
+inventory.maxamount 500
+}
+
+Actor BrutalCounter2 : Inventory
+{
+inventory.maxamount 500
+}
+
+Actor oneliner: Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+
+
+Actor advtaunting: Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+Actor FistsSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ShotgunSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor MinigunSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SSGSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor RocketLauncherSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor GrenadeLauncherSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor PlasmaGunSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor RailGunSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor BFGSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BFG10KSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor SubMachineGunSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor FlameCannonSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor RevenantLauncherSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor FallingHeight : Inventory
+{
+inventory.maxamount 100
+}
+
+
+Actor LostSoulSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+Actor DeathTimer1 : Inventory
+{
+inventory.maxamount 120
+}
+
+
+Actor Timer555 : Inventory
+{
+inventory.maxamount 555
+}
+
+
+
+Actor SledgeSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor DualHandgunSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ASGSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BHCSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HellRifleSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor DoMine : Inventory 
+{
+inventory.maxamount 1
+}
+Actor LandMineSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor UACSMGSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor DoSwarmPod : Inventory
+{
+inventory.maxamount 1
+}
+Actor PressedUse : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor GoWeaponSpecialAbility : Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+Actor DoElecPod : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsSlideKicking : Inventory
+{
+inventory.maxamount 1
+}
+Actor UseAttack : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor StealthAttack : Inventory
+{
+inventory.maxamount 1
+}
+Actor FreezerSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+
+
+
+
+Actor TargetIsACyberdemon : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor TargetIsAMastermind : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor TargetIsABaronOfHell : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor TargetIsAMancubus : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Kicking : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Punching : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Berserker : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor KickAttackLow
+{
++NOGRAVITY
+}
+
+ACTOR HealthBackpackAdd : Health
+{
+	Inventory.Amount 1
+}
+
+
+
+ACTOR DidHeal : Inventory {}
+
+Actor NoFatality : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor KickHasHit : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor KickHasHitAnObject : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor DoHealBackpack : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor KnifeHasHit : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ShotgunguyHead: Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor HeavyStrikeRight : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HeavyStrikeLeft : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HeavyStrikeUpWard : Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+
+Actor PSeq1 : Inventory
+{
+inventory.maxamount 2
+}
+
+Actor PSeq2 : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor PSeq3 : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Reloading : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Unloading : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HasUnloaded : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor IsInvisible : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsFiring : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor IsFiringAltFireOnFullAuto : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ADSMode : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor TurningLeft123 : Inventory
+{
+inventory.maxamount 1
+}
+
+
+
+Actor UsedStamina : Inventory
+{
+inventory.maxamount 510
+}
+
+Actor RifleSpread : Inventory
+{
+inventory.maxamount 6
+}
+
+Actor Zoomed : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor RifleSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor CarbineSelected : Inventory
+{
+Inventory.maxamount 1
+}
+
+Actor DoPunch : Inventory 
+{
+inventory.maxamount 1
+}
+
+Actor RevolverSelected : Inventory
+{
+Inventory.Maxamount 1
+}
+
+Actor QSGSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor HandgunSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor M2Selected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SGLSelected : Inventory
+{
+inventory.maxamount 1
+}
+Actor NewChaingunSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BFGBeamSelected : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HasBurningBarrel : Inventory
+{
+inventory.maxamount 1
+}
+Actor IsFlashlightOn : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor FLashlightAction : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Pumping : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ImpactMovesSling : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor UseShotgunStrap : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor ShotgunWasEmpty : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Spin: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor RandomHeadExploder: Inventory
+{
+inventory.maxamount 1
+}
+Actor TimeFreezer2 : PowerupGiver
+{
+  Inventory.Pickupmessage "Time Freezer!"
+  Inventory.Icon "MEGAA0"
+  Inventory.MaxAmount 0
+  Inventory.UseSound "pickups/slowmo"
+  Powerup.Type "TimeFreezer"
+  Powerup.Duration 50
+  Translation "128:143=48:63"
+  +AUTOACTIVATE
+  +INVENTORY.FANCYPICKUPSOUND
+  States
+  {
+  Spawn:
+    MEGA ABCD 4 bright
+    Loop
+  }
+}
+
+ACTOR PowerTimeFreezer2 : PowerTimeFreezer
+{
+  Powerup.Duration 2
+}
+
+Actor HasPlasmaWeapon: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SawSelected: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HasCutingWeapon: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HasClassicSaw: Inventory
+{
+inventory.maxamount 1
+}
+Actor SawFireSeq1: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SawFireSeq2: Inventory
+{
+inventory.maxamount 1
+}

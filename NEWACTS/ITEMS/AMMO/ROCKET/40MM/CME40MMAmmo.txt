@@ -1,0 +1,96 @@
+
+ACTOR CME40mmGrenadeAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 2 40mm Grenades"
+	Inventory.Amount 2
+	Inventory.MaxAmount 225
+	Ammo.BackpackAmount 2
+	Ammo.BackpackMaxAmount 450
+	Inventory.Icon "GR10A0"
+	inventory.pickupsound "40MMGR"
+	States
+	{
+	Spawn:
+		GR10 A -1
+		Stop
+	}
+}
+
+
+ACTOR CME40mmGrenadeAmmo2 : CME40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a 40mm Grenade"
+	Inventory.Amount 1
+	inventory.pickupsound "40MMGR"
+	Scale 1.2
+	States
+	{
+	Spawn:
+		GR12 A -1
+		Stop
+	}
+}
+
+ACTOR CME40mmGrenadeBox : CME40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of 40mm Grenades"
+	Inventory.Amount 7
+	inventory.pickupsound "40MMGBOX"
+	States
+	{
+	Spawn:
+		GR09 A -1
+		Stop
+	}
+}
+
+ACTOR CME40mmGrenadeBox2 : CME40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of 40mm Grenades"
+	Inventory.Amount 5
+	inventory.pickupsound "40MMGBOX"
+	States
+	{
+	Spawn:
+		GR11 A -1
+		Stop
+	}
+}
+
+ACTOR CME40mmGrenadeBox3 : CME40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of 40mm Grenades"
+	Inventory.Amount 10
+	inventory.pickupsound "40MMGBOX"
+	States
+	{
+	Spawn:
+		GR13 A -1
+		Stop
+	}
+}
+
+ACTOR CME40mmGrenadeBox4 : CME40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of 40mm Grenades"
+	Inventory.Amount 6
+	inventory.pickupsound "40MMGBOX"
+	States
+	{
+	Spawn:
+		GR14 A -1
+		Stop
+	}
+}

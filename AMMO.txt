@@ -1,2 +1,22 @@
 // Backpack ---------------------------------------------------------------
 
+ACTOR AmmoSuply : BackpackItem 
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupMessage "$GOTBACKPACK"
+	States
+	{
+	Spawn:
+		BPAK A -1
+		Stop
+    Pickup:
+        TNT1 A 0 A_GiveInventory("CMEShellBox", 1)
+        TNT1 A 0 A_GiveInventory("CMEClip2Box", 1)
+        TNT1 A 0 A_GiveInventory("CMECellPack", 1)
+        TNT1 A 0 A_GiveInventory("CMERocketBox", 1)
+        Stop
+	}
+}
+

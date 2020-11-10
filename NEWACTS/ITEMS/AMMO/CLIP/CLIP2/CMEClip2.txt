@@ -1,0 +1,133 @@
+ACTOR CMEClip2 : Ammo 
+{
+	Inventory.PickupMessage "Picked up a High Caliber Magazine."
+	Inventory.Amount 20
+	Inventory.MaxAmount 450
+	Ammo.BackpackAmount 20
+	Ammo.BackpackMaxAmount 900
+	Scale 0.9
+	Inventory.Icon "CLIPC0"
+	Inventory.PickupSound "clip/pkup"
+	States
+	{
+	Spawn:
+		CLIP D -1
+		Stop
+	}
+}
+ACTOR CMEClip22 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a High Caliber Magazine."
+	Inventory.Amount 20
+	Ammo.BackpackAmount 20
+	Inventory.PickupSound "clip/pkup"
+	States
+	{
+	Spawn:
+		CLIP C -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 80
+	States
+	{
+	Spawn:
+		AMO2 A -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box2 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 100
+	Scale 0.9
+	States
+	{
+	Spawn:
+		AMO2 B -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box3 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 125
+	Scale 0.75
+	States
+	{
+	Spawn:
+		AMO2 C -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box4 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 75
+	Scale 0.75
+	States
+	{
+	Spawn:
+		AMO2 D -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box5 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 60
+	States
+	{
+	Spawn:
+		AMO2 E -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box6 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 50
+	States
+	{
+	Spawn:
+		AMO2 F -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2Box7 : CMEClip2
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.PickupSound "CBOXPKUP"
+	Inventory.Amount 70
+	States
+	{
+	Spawn:
+		AMO2 G -1
+		Stop
+	}
+}

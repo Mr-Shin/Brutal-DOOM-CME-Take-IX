@@ -542,6 +542,15 @@ ACTOR SSawPuff2: SSawPuff
 {
 damagetype Cut
 }
+ACTOR SSawPuff3: SSawPuff
+{
+	damagetype saw
+}
+
+ACTOR SSawPuff4: SSawPuff
+{
+	damagetype Massacre
+}
 
 ACTOR FakeSSawPuff: SSawPuff
 {

@@ -1,0 +1,21 @@
+ACTOR CME50CalAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a row of 50 Caliber Bullets."
+	Inventory.Amount 40
+	Inventory.MaxAmount 375
+	Ammo.BackpackAmount 40
+	scale 0.7
+	inventory.pickupsound "50PICKUP"
+	Ammo.BackpackMaxAmount 750
+	Inventory.Icon "50CLA0"
+	States
+	{
+	Spawn:
+		50CL A -1
+		Stop
+	}
+}
+
+

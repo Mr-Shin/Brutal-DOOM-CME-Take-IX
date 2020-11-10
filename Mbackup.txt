@@ -372,7 +372,7 @@ ACTOR Marine_Rifle
 	
 	Waits3:
 	TNT1 A 0
-	TNT1 A 0 A_JumpIfInTargetInventory("Clip2", 40, 3)
+	TNT1 A 0 A_JumpIfInTargetInventory("CMEClip", 40, 3)
 	Goto GiveAmmo
 	TNT1 AAA 0
 	TNT1 A 0 A_PlaySound("MRNWT", 2)
@@ -396,7 +396,7 @@ ACTOR Marine_Rifle
 	MR7S A 10 A_FaceTarget
 	TNT1 A 0 A_PlaySound("MRNGI1")
     MR8S CD 15
-	TNT1 A 0 A_GiveToTarget("Clip2", 50)
+	TNT1 A 0 A_GiveToTarget("CMEClip", 50)
     //TNT1 A 0 A_SpawnItemEx("Stimpack", 40, 0)
 	Goto Waits
 	

@@ -58,6 +58,7 @@ ACTOR ClassicSaw : Weapon
 	Obituary "$OB_MPCHAINSAW"
 	Tag "$TAG_CHAINSAW"
 	+WEAPON.MELEEWEAPON
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.AXEBLOOD
 	States
 	{
@@ -187,6 +188,7 @@ ACTOR ClassicShotgun : DoomWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 8
 	Weapon.AmmoType "Shell"
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	Inventory.PickupMessage "$GOTSHOTGUN"
 	Obituary "$OB_MPSHOTGUN"
@@ -248,6 +250,7 @@ ACTOR ClassicSSG : DoomWeapon
 	Obituary "$OB_MPSSHOTGUN"
 	Tag "$TAG_SUPERSHOTGUN"
 	+WEAPON.NOAUTOFIRE
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	States
 	{
@@ -309,6 +312,7 @@ ACTOR ClassicChaingun : DoomWeapon
 	Weapon.AmmoType "Clip2"
 	Inventory.PickupMessage "$GOTCHAINGUN"
 	Obituary "$OB_MPCHAINGUN"
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	Tag "$TAG_CHAINGUN"
 	States
@@ -368,6 +372,7 @@ ACTOR ClassicRocketLauncher : DoomWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 2
 	Weapon.AmmoType "RocketAmmo"
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	Inventory.PickupMessage "$GOTLAUNCHER"
 	Tag "$TAG_ROCKETLAUNCHER"
@@ -414,6 +419,7 @@ ACTOR ClassicPlasmaRifle : DoomWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "Cell"
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	Inventory.PickupMessage "$GOTPLASMA"
 	Tag "$TAG_PLASMARIFLE"
@@ -508,6 +514,7 @@ ACTOR VanillaBFG9000 : DoomWeapon
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "Cell"
 	+WEAPON.NOAUTOFIRE
+	+WEAPON.CHEATNOTWEAPON
 	Inventory.PickupMessage "$GOTBFG9000"
 	Tag "$TAG_BFG9000"
 	States

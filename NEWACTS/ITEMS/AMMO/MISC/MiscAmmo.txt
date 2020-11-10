@@ -1,0 +1,18 @@
+
+ACTOR CMEGas : Ammo
+{
+   Inventory.Amount 50
+   Inventory.MaxAmount 999
+   Ammo.BackpackAmount 100
+   Ammo.BackpackMaxAmount 999
+   Inventory.Icon "GSLNA0"
+   Inventory.PickupMessage "You got Gasoline."
+}
+ACTOR CMEMiniHellRocketAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+   Inventory.Icon "FATBD0"
+}

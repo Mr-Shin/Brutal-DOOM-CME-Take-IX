@@ -1,0 +1,29 @@
+Actor RadSuitSpawner : CMEItemSpawner replaces RadSuit
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+	Deciding:
+		TNT1 A 1
+		loop
+	DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnRadSuit")
+		Stop	
+	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
+		DiceTier1:
+		TNT1 A 0 A_Jump(256, "SpawnRadSuit")
+		DiceTier2:
+		TNT1 A 0 A_Jump(256, "SpawnRadSuit")
+		DiceTier3:
+		TNT1 A 0 A_Jump(256, "SpawnRadSuit")
+		DiceTier4:
+		TNT1 A 0 A_Jump(256, "SpawnRadSuit")
+	SpawnRadSuit:
+		TNT1 A 0 A_SpawnItemEx("DropedRadSuit",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	}
+}

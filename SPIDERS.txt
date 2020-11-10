@@ -3,7 +3,7 @@
 // Arachnotron
 //
 //===========================================================================
-ACTOR Arachnotron1: Arachnotron 
+ACTOR Arachnotron1: Arachnotron
 {
 	Monster
 	+FLOORCLIP

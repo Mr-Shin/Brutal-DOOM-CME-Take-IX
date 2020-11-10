@@ -1,0 +1,65 @@
+ACTOR CMEClip1 : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Low Caliber Magazine."
+	Inventory.Amount 5
+	Inventory.MaxAmount 400
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 800
+	Inventory.Icon "CLIPA0"
+	Inventory.PickupSound "clip/pkup"
+	States
+	{
+	Spawn:
+		CLIP B -1
+		Stop
+	}
+}
+
+ACTOR CMEClip12 : CMEClip1
+{
+	Game Doom
+	Scale 0.9
+	Inventory.PickupMessage "Picked up a Low Caliber Magazine."
+	Inventory.Amount 10
+	Ammo.BackpackAmount 10
+	Inventory.PickupSound "clip/pkup"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+
+ACTOR CMEClip1Box : CMEClip1
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 50
+	inventory.pickupsound "CBOXPKUP"
+	States
+	{
+	Spawn:
+		AMO1 A -1
+		Stop
+	}
+}
+
+ACTOR CMEClip1Box2 : CMEClip1
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 25
+	inventory.pickupsound "CBOXPKUP"
+	States
+	{
+	Spawn:
+		AMO1 B -1
+		Stop
+	}
+}
+

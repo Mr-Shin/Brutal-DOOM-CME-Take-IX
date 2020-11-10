@@ -493,8 +493,6 @@ Model MastermindTracer // Name of actor in DECORATE
 
 
 
-
-
 Model DetectFloorBullet     // Name of actor in DECORATE
 {
    Path "models/bulletdecals"    // Path to model in PK3

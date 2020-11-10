@@ -16,10 +16,53 @@ OptionMenu "OptionsMenu"
 	Submenu "Sound Options",			"SoundOptions"
 	Submenu "Display Options",			"VideoOptions"
 	Submenu "Set video mode",			"VideoModeMenu"
+	Submenu "FlashLight Options",		"BDDFLO"
 	StaticText " "
 	SafeCommand "Reset to defaults",	"reset2defaults"
 	SafeCommand	"Reset to last saved",	"reset2saved"
 	Command "Go to console",			"menuconsole"
+}
+
+OptionMenu "BDDFLO"
+{
+	Title "Flash light Options"
+	StaticText " "
+	Option "Flashlight mode", "b_flashlightmode", "FlMode" 
+	StaticText " "
+	Option "Use LQ Flashlight", "b_flashlightlowq", "YesNo"
+	StaticText " "
+	StaticText "Vertical Preset "
+	Command "Preset: Beam", "PVBeam"
+	Command "Preset: DarkDoom", "PVDark"
+	StaticText " "
+	Slider "Vertical Flashlight position", "b_flashlightvpos", -255, 255, 1, 0
+	StaticText " "
+	StaticText "Horizontal Preset "
+	Command "Preset: Beam", "PHBeam"
+	Command "Preset: DarkDoom", "PHDark"
+	Command "Preset: Right Shouder", "PHRShouder"
+	Command "Preset: Left Shouder", "PHLShouder"
+	StaticText " "
+	Slider "Horizontal Flashlight position", "b_flashlighthpos", -255, 255, 1, 0
+}
+
+OptionValue "FlMode"
+{
+	0, "Beam"
+	1, "DarkDoom"
+}
+
+OptionValue "FlVPos"
+{
+  18, "Beam"
+  32, "DarkDoom"
+}
+
+OptionValue "FlHPos"
+{
+  0, "Beam"
+  4, "DarkDoom"
+  36, "Shoulder"
 }
 
 OptionMenu "BrutalOptions"
@@ -33,13 +76,20 @@ OptionMenu "BrutalOptions"
   Option "Enable Brutal Doom Options", "isrunningzandronum", "YesOrNoFalse"
   StaticText " "
   StaticText " "
+
   
   StaticText "===== Client Options ====="
   Option "Blood Amount", "zdoombrutalblood", "BrutalBlood"
   StaticText "How much blood you want to see?"
   StaticText " "
   
+  Option "HUD Type", "bd_sbartype", "HUDType"
+  StaticText "What HUD do you want?"
+  StaticText " "
   
+  Command "Force HUD to Restart","pukename BDRespawn"
+  StaticText " "
+  StaticText " "
   
   Option "Enable Janitor", "zdoombrutaljanitor", "YesOrNo"
   StaticText "Makes gibs disappear after 30 seconds."
@@ -48,14 +98,43 @@ OptionMenu "BrutalOptions"
   Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesOrNo"
   StaticText " "
   
+  Command "Go to testing map", "map test"  
+  StaticText " "
+  StaticText " "
+  
+  
   StaticText "===== Server options ====="
   StaticText "(Requires map restart to take effect)"  
   Option "Enable Bullet Penetration", "bd_nobulletpenetration", "YesOrNoFalse"
   StaticText "Makes bullets and rockets penetrate thin walls and doors."
   StaticText " "
-  
-  Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
+
+
+  Option "Spawning Preset", "CMESpawnBalance", "CMESpawnOptions"
   StaticText " "
+  StaticText " "
+  Option "Disable Marines", "bd_disablemarines", "YesOrNo"
+  Option "Casings Stay on floor forever", "bd_infinitecasings", "YesOrNo"
+  
+  //Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
+  StaticText "Improves several maps with better textures,"
+  StaticText  "new decorations and sometimes new enemies."
+  StaticText " "
+  
+  
+ // Option "Level Enhancement System - Disable Voxels", "bd_voxeldec", "YesorNoFalse"
+  StaticText "Disable voxel decorations to prevent crashes on Android."
+  StaticText " "
+  
+  //Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
+  StaticText " "
+  
+  //Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
+  StaticText " "
+  
+  //Option "Water Ripple Effects", "bd_disablewaterripples2", "YesOrNoFalse"
+  StaticText " " 
+ 
 }
 
 OptionValue "BrutalBlood"
@@ -72,14 +151,29 @@ OptionValue "YesOrNo"
 	0, "No"
 	1, "Yes"
 }
+OptionValue "CMESpawnOptions"
+{
+	1, "Tiered Progression"
+	2, "Chaotic Random"
+}
 
-
-
+OptionValue "HUDType"
+{
+	1, "Brutal Simple 16:9"
+	2, "Brutal Simple 4:3"
+}
 OptionValue "YesOrNoFalse"
 {
 	1, "No"
 	0, "Yes"
 }
+OptionValue "DisabledOption"
+{
+	0, "Enabled"
+	1, "Disabled"
+}
+
+
 
 ListMenu "MainMenu"
 {

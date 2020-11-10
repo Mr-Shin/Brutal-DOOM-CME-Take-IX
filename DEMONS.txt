@@ -23,8 +23,8 @@ ACTOR BullDemon: Demon
 	Height 56
 	Radius 22
 	Mass 400
-    Speed 11
-    FastSpeed 9 //yes, his fast speed is slower because it would make him sanic fast if it was default.
+    Speed 10
+    FastSpeed 20 //yes, his fast speed is slower because it would make him sanic fast if it was default.
 	PainChance "Saw", 200
 	PainChance "Cut", 200
 	PainChance "Kick", 255
@@ -50,15 +50,20 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	DamageType Eat
 	MaxStepHeight 32
 	MaxDropOffHeight 32
-	DropItem "v20bDemonStrengthRune" 2
+	DropItem "DemonStrengthRune" 2
 	damagefactor "cut", 0.7
 	damagefactor "saw", 0.7
 	States
 	{
 	
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		Stop
     Spawn:
 		TNT1 A 0
-		//Check if Vanilla Mode is activated
+		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		
 	Spawned:	
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")

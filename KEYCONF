@@ -49,6 +49,10 @@ addplayerclass Doomer //nomenu
    
    addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves              // here too
 
+	   AddMenuKey "Dual Wield/Weapon Special" weaponspecial
+   Alias weaponspecial "puke 3756"
+   DefaultBind V weaponspecial
+
    addmenukey "Roll Left" roleft
    alias roleft "puke 306"
    defaultbind Z roleft
@@ -57,4 +61,34 @@ addplayerclass Doomer //nomenu
    addmenukey "Roll Right" roright
    alias roright "puke 307"
    defaultbind C roright
+   
+      AddMenuKey "Throw Mine" usemine
+   Alias usemine "pukename PromixityMineHotkey"
+   DefaultBind H usemine
+   
+   AddMenuKey "Quick Melee/Combo" punchem
+   Alias punchem "puke 3757"
+   DefaultBind V punchem
+   
+   
+   // Key Configuration
+// Aliases
+Alias "ToggleFlashlight" "PukeName ToggleFlashlight"
+Alias "PVBeam" "b_flashlightvpos 18"
+Alias "PVDark" "b_flashlightvpos 32"
+
+Alias "PHBeam" "b_flashlighthpos 0"
+Alias "PHDark" "b_flashlighthpos 4"
+Alias "PHLShouder" "b_flashlighthpos -36"
+Alias "PHRShouder" "b_flashlighthpos 36"
+
+
+// Key Sections
+AddKeySection "Flashlight" "flashlight"
+
+// Menu Keys
+AddMenuKey "Toggle" "ToggleFlashlight"
+
+// Default Binds
+DefaultBind "F" "ToggleFlashlight"
    

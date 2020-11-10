@@ -1,0 +1,80 @@
+ACTOR CMERocketAmmo : Ammo 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 2 Rockets."
+	Inventory.Amount 2
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 2
+	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "ROCKA0"
+	inventory.pickupsound "rock/pkup"
+	States
+	{
+	Spawn:
+		ROCK A -1
+		Stop
+	}
+}
+
+
+ACTOR CMERocketBox : CMERocketAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Rockets"
+	Inventory.Amount 5
+	inventory.pickupsound "rbox/pkup"
+	States
+	{
+	Spawn:
+		BROK A -1
+		Stop
+	}
+}
+
+ACTOR CMERocketBox2 : CMERocketAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Rockets"
+	Inventory.Amount 3
+	inventory.pickupsound "rbox/pkup"
+	States
+	{
+	Spawn:
+		BROK B -1
+		Stop
+	}
+}
+
+ACTOR CMERocketBox3 : CMERocketAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Rockets"
+	Inventory.Amount 10
+	inventory.pickupsound "rbox/pkup"
+	States
+	{
+	Spawn:
+		BROK C -1
+		Stop
+	}
+}
+
+ACTOR CMERocketBox4 : CMERocketAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Rockets"
+	Inventory.Amount 15
+	inventory.pickupsound "rbox/pkup"
+	States
+	{
+	Spawn:
+		BROK D -1
+		Stop
+	}
+}
+

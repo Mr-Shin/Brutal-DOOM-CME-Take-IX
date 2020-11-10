@@ -37,8 +37,8 @@ ACTOR ShotgunGuy1: ShotgunGuy
 	damagefactor "GibRemoving", 0.0
 	damagefactor "SSG", 50.0
 	PainChance "LowKick", 255
-	DropItem "GrenadeAmmo" 15
-	DropItem "Shotgun"
+	DropItem "CMEGrenadeAmmo" 15
+	DropItem "Shot_Gun"
 	damagetype "Melee"
 	Monster
 	+FLOORCLIP
@@ -78,9 +78,14 @@ ACTOR ShotgunGuy1: ShotgunGuy
         ZRO3 ABCDEFGH 2 A_FaceTarget
         Goto Missile
 	
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaShotgunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		Stop
     Spawn:
 		TNT1 A 0
-		//Check if Vanilla Mode is activated
+		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		  TNT1 A 0
 		  TNT1 A 0 A_GiveInventory("SKShotgunGuy", 1)
 		  TNT1 A 0 A_GiveInventory("TypeSergeant", 1)

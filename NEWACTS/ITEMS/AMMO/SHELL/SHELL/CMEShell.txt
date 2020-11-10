@@ -1,0 +1,164 @@
+ACTOR CMEShell : Ammo 
+{
+	Game Doom
+	SpawnID 12
+	Inventory.PickupMessage "Picked up 4 Shells."
+	Inventory.Amount 4
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 8
+	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "SHELA0"
+	Inventory.Pickupsound "SHELPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Stop
+	}
+}
+
+ACTOR CMEShell2 : CMEShell
+{
+	Game Doom
+	SpawnID 12
+	Inventory.PickupMessage "Picked up 2 Shells."
+	Inventory.Amount 2
+	Inventory.Pickupsound "SHELPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL B -1
+		Stop
+	}
+}
+
+ACTOR CMEShell3 : CMEShell
+{
+	Game Doom
+	SpawnID 12
+	Inventory.PickupMessage "Picked up 5 Shells."
+	Inventory.Amount 5
+	Inventory.Pickupsound "SHELPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL C -1
+		Stop
+	}
+}
+
+ACTOR CMEShell4 : CMEShell
+{
+	Game Doom
+	SpawnID 12
+	Inventory.PickupMessage "Picked up 6 Shells."
+	Inventory.Amount 6
+	Inventory.Pickupsound "SHELPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL D -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox : CMEShell 
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 20
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX A -1
+		Stop
+	}
+}
+
+
+ACTOR CMEShellBox2 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 25
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX B -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox3 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 30
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX C -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox4 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 15
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX D -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox5 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 10
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX E -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox6 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of Shells."
+	Inventory.Amount 40
+	Inventory.Pickupsound "SBOXPKUP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX F -1
+		Stop
+	}
+}

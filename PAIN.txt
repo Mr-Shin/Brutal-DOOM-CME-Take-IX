@@ -22,7 +22,7 @@ ACTOR PainElemental1
 	DeathSound "pain/death"
 	ActiveSound "pain/active"
     bloodtype "Brutal_Blood"
-	DropItem "v20bDemonStrengthRune" 5
+	DropItem "DemonStrengthRune" 5
 	damagefactor "TeleportRemover", 0.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	PainChance "Kick", 255
