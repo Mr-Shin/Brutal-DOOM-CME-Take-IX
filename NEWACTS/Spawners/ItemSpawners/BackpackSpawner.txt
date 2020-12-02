@@ -7,23 +7,35 @@ Actor BackpackSpawner : CMEItemSpawner Replaces Backpack
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBackpackSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnBackpack")
+		TNT1 A 0 A_Jump(256, "SpawnBackpack", "SpawnCombatBackpack")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnBackpack")
+		TNT1 A 0 A_Jump(0, "SpawnCombatBackpack")
 		DiceTier2:
 		TNT1 A 0 A_Jump(256, "SpawnBackpack")
+		TNT1 A 0 A_Jump(0, "SpawnCombatBackpack")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnBackpack")
+		TNT1 A 0 A_Jump(200, "SpawnBackpack")
+		TNT1 A 0 A_Jump(200, "SpawnCombatBackpack")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnBackpack")
+		TNT1 A 0 A_Jump(1, "SpawnBackpack")
+		TNT1 A 0 A_Jump(256, "SpawnCombatBackpack")
 	SpawnBackpack:
 		TNT1 A 0 A_SpawnItemEx("DropedBackpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnCombatBackpack:
+		TNT1 A 0 A_SpawnItemEx("DropedCombatBackpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting	
+	ReplaceBackPack:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("AmmoSuply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
 	}
 }

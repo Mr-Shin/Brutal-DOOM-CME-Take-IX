@@ -1,5 +1,6 @@
 clearplayerclasses
-addplayerclass Doomer //nomenu
+addplayerclass RDoomer //nomenu
+addplayerclass Doomer
 
    addkeysection "BrutalDoom - Advanced Movements" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
    
@@ -52,6 +53,10 @@ addplayerclass Doomer //nomenu
 	   AddMenuKey "Dual Wield/Weapon Special" weaponspecial
    Alias weaponspecial "puke 3756"
    DefaultBind V weaponspecial
+   
+   AddMenuKey "Change Weapon Version" changeweapversion
+   Alias changeweapversion "Puke 1997"
+   DefaultBind B changeweapversion
 
    addmenukey "Roll Left" roleft
    alias roleft "puke 306"

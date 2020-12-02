@@ -1,0 +1,74 @@
+// Medikit -----------------------------------------------------------------
+
+ACTOR Medikit2 : Health
+{
+	Game Doom
+	SpawnID 24
+	Inventory.Amount 25
+	Inventory.PickupMessage "Picked up a Medikit."
+	Health.LowMessage 25, "Picked up a Medikit that you REALLY need!"
+	Inventory.pickupsound "misc/L_HP_pickup"
+	States
+	{
+	Spawn:
+        MEDI A 1
+		MEDI A -1
+		Stop	
+	BecomeRealistic:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("RealisticMedikit")
+		Stop
+	}
+}
+
+ACTOR Medikit3 : Health 
+{
+	Game Doom
+	SpawnID 24
+	Inventory.Amount 30
+	Inventory.PickupMessage "Picked up a Medikit."
+	Health.LowMessage 25, "Picked up a Medikit that you REALLY need!"
+	Inventory.pickupsound "misc/L_HP_pickup"
+	States
+	{
+	Spawn:
+        MEDK B 1
+		MEDK B -1
+		Stop	
+	}
+}
+
+ACTOR Medikit4 : Health
+{
+	Inventory.Amount 50
+	Inventory.PickupMessage "Picked up a Medikit."
+	Health.LowMessage 25, "Picked up a Medikit that you REALLY need!"
+	Inventory.PickupSound "misc/L_HP_pickup"
+	+DONTGIB
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		MEDK C -1
+		Stop
+	}
+}
+
+ACTOR Medipack : Health
+{
+	Game Doom
+	SpawnID 24
+	+FLOORCLIP
+	+DONTGIB
+	Inventory.Pickupsound "misc/E_HP_pickup"
+	Inventory.Amount 75
+	Inventory.PickupMessage "Picked up a Medipack."
+	Health.LowMessage 25, "Picked up a medipack that you REALLY need!"
+	States
+	{
+	Spawn:
+		MEDK D -1
+		Stop
+	}
+}

@@ -771,8 +771,7 @@ ACTOR XDeathKnightHead
     Speed 6
 	Mass 12
     Health 30
-  bloodtype "GreenBlood"
-  bloodcolor darkgreen
+BloodType "Brutal_Blood"
 	BounceFactor 0.6
 	+DOOMBOUNCE
     -NOBLOCKMAP
@@ -809,8 +808,7 @@ ACTOR XDeathBaronHead
     Speed 6
 	Mass 12
     Health 30
-  bloodtype "GreenBlood"
-  bloodcolor darkgreen
+BloodType "Brutal_Blood"
     gravity 0.5
 	Decal BloodSuper
 	BounceFactor 0.4
@@ -1026,4 +1024,16 @@ TNT1 A 0 A_Explode(5000, 30)
 		Stop
 
  }
+}
+
+actor TankEngineWeakSpot: HeadshotTarget4
+{
+Radius 24
+Height 44
++NOBLOOD
++THRUSPECIES
+Species "EnemyTank"
+DamageFactor "Fire", 0.0
++DONTRIP
+DamageFactor "Flames", 0.0
 }

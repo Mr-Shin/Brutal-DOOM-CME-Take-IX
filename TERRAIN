@@ -1,9 +1,9 @@
 //********** Splashes **********
 splash 	nukage
 {
- smallclass 	nukageSplashBase
+ smallclass 	nukageSplashBasesmall
  smallclip		6
- //smallsound	world/lavasizzlesmall
+ smallsound	world/lavasizzlesmall
 
  baseclass		nukageSplashBase
  chunkclass	    sludgechunk
@@ -17,7 +17,7 @@ splash 	nukage
 
 splash Slime
 {
-	smallclass		SlimeSplashBaseSmall
+	smallclass		none
 	smallclip		16
 	smallsound		world/sludgegloopsmall
 	
@@ -28,7 +28,7 @@ splash Slime
 	chunkyvelshift	8
 	chunkzvelshift	8
 	chunkbasezvel	2
-	sound			world/sludgegloop
+	sound			world/watersplash
 	NoAlert
 }
 
@@ -36,7 +36,7 @@ splash 	water
 {
  smallclass 	watersplashbasesmall
  smallclip		16
- //smallsound	dssplash
+ smallsound	dssplash
 
  baseclass		watersplashbase2
  chunkclass	watersplash
@@ -52,7 +52,7 @@ splash 	blood
 {
  smallclass 	bloodsplashbasesmall
  smallclip		16
- //smallsound	world/sludgegloopsmall
+ smallsound	world/sludgegloopsmall
 
 
  baseclass		bloodsplashbase3
@@ -67,11 +67,11 @@ splash 	blood
 
 splash 	lava
 {
- smallclass 	lavasplash
+ smallclass 	LavaSplashBase
  smallclip		10
- //smallsound	world/lavasizzlesmall
+ smallsound	world/lavasizzlesmall
 
- baseclass		lavasplash
+ baseclass		LavaSplashBase
  //chunkclass	    lavasmoke2
  chunkxvelshift	-1
  chunkyvelshift	-1
@@ -80,9 +80,73 @@ splash 	lava
  sound		world/lavasizzle
  NoAlert
  
- 
 }
 //********** Terrain **********
+terrain carpet
+{
+    footclip 0
+}
+
+terrain dirt
+{
+    footclip 0
+}
+
+terrain gravel
+{
+    footclip 0
+}
+
+terrain metal
+{
+    footclip 0
+}
+
+terrain metal2
+{
+    footclip 0
+}
+
+terrain rock
+{
+    footclip 0
+}
+
+terrain slimy
+{
+    footclip 0
+}
+
+terrain snow
+{
+    footclip 0
+}
+
+terrain hard
+{
+    footclip 0
+}
+
+terrain tile
+{
+    footclip 0
+}
+
+terrain tile2
+{
+    footclip 0
+}
+
+terrain wood
+{
+    footclip 0
+}
+
+terrain electric
+{
+    footclip 0
+}
+
 
 terrain	 nukage
 {
@@ -101,7 +165,7 @@ terrain	water
 terrain	lava
 {
  splash 	lava
- footclip	 6
+ footclip	 1
  liquid
  damagetype		"Fire"
 }
@@ -124,7 +188,14 @@ terrain Slime
 
 
 
+//Which flat does what
 
+
+
+
+
+
+//And now the hard floor sound definitions
 
 splash carpet
 {
@@ -321,93 +392,21 @@ splash wood
 }
 
 
-
-
-terrain carpet
+splash electric
 {
-	splash			carpet
-	footclip		0
-	//liquid//
-}
+	smallclass		None
+	smallclip		0
+	smallsound		njmt
 
-terrain dirt
-{
-	splash			dirt
-	footclip		0
-	//liquid//
+	baseclass		None
+	chunkclass		None
+	chunkxvelshift	0
+	chunkyvelshift	0
+	chunkzvelshift	0
+	chunkbasezvel	0
+	sound			floor/elec1
+	NoAlert
 }
-
-terrain gravel
-{
-	splash			gravel
-	footclip		0
-	//liquid//
-}
-
-terrain metal
-{
-	splash			metal
-	footclip		0
-	//liquid//
-}
-
-terrain metal2
-{
-	splash			metal2
-	footclip		0
-	//liquid//
-}
-
-terrain rock
-{
-	splash			rock
-	footclip		0
-	//liquid//
-}
-
-terrain snow
-{
-	splash			snow
-	footclip		0
-	//liquid//
-}
-
-terrain slimy
-{
-	splash			slimy
-	footclip		0
-	//liquid//
-}
-
-terrain hard
-{
-	splash			hard
-	footclip		0
-	//liquid//
-}
-
-terrain tile
-{
-	splash			tile
-	footclip		0
-	//liquid//
-}
-
-terrain tile2
-{
-	splash			tile2
-	footclip		0
-	//liquid//
-}
-
-terrain wood
-{
-	splash			wood
-	footclip		0
-	//liquid//
-	
-}
-
 
 ifdoom
 //Splash floors first
@@ -418,11 +417,11 @@ floor FWATER1 Water
 floor FWATER2 Water
 floor FWATER3 Water
 floor FWATER4 Water
-floor FWATER02 Water
 floor LAVA1 Lava
 floor LAVA2 Lava
 floor LAVA3 Lava
 floor LAVA4 Lava
+floor LAVAFL Lava
 floor NUKAGE1 Nukage
 floor NUKAGE2 Nukage
 floor NUKAGE3 Nukage
@@ -1117,48 +1116,4 @@ floor TLITE6_1 tile
 floor TLITE6_4 tile
 floor TLITE6_5 tile
 floor TLITE6_6 tile
-floor TLITE6_6 tile
-
-floor BRICK22 rock
-floor STONE2 rock
-floor REDWALL rock
-floor CEMENTWA rock
-floor CEMENTBL rock
-floor CEMENTRE rock
-floor CEMENT9 rock
-floor CAUTION3 rock
-floor A-MOULD rock
-floor REDCARTO metal2
-floor BLUECART metal2
-floor GREENCART metal2
-floor WHITE metal2
-floor GRAYCART metal2
-floor SHAWN2 metal2
-floor SHAWN1 metal2
-floor DNVENT1 metal2
-floor VENT1 metal2
-floor VENT2 metal2
-floor VENT3 metal2
-floor METAL metal2
-floor METAL2 metal2
-floor METAL1 metal2
-floor METAL10 metal2
-floor METAL12 metal2
-floor METAL13 metal2
-floor METAL14 metal2
-floor URDIRT01 dirt
-floor DIRT01 dirt
-floor DIRT02 dirt
-floor DIRT03 dirt
-floor DIRT04 dirt
-floor DIRT05 dirt
-floor DIRT06 dirt
-floor DIRT08 dirt
-floor DESERT02 dirt
-floor DESERT01 dirt
-floor DESERT03 dirt
-floor WOOD006 wood
-floor WOODVERT wood
-floor WOOD1 wood
-floor DNBLDG03 wood
 endif

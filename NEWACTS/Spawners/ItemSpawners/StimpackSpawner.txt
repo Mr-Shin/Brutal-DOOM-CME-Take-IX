@@ -7,23 +7,42 @@ Actor StimpackSpawner : CMEItemSpawner Replaces Stimpack
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleStimpackSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnStimpack")
+		TNT1 A 0 A_Jump(256, "SpawnStimpack", "SpawnStimpack3", "SpawnBerserkStimpack")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnStimpack")
+		TNT1 A 0 A_Jump(0, "SpawnStimpack3")
+		TNT1 A 0 A_Jump(0, "SpawnBerserkStimpack")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnStimpack")
+		TNT1 A 0 A_Jump(200, "SpawnStimpack")
+		TNT1 A 0 A_Jump(86, "SpawnStimpack3")
+		TNT1 A 0 A_Jump(0, "SpawnBerserkStimpack")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnStimpack")
+		TNT1 A 0 A_Jump(200, "SpawnStimpack")
+		TNT1 A 0 A_Jump(200, "SpawnStimpack3")
+		TNT1 A 0 A_Jump(128, "SpawnBerserkStimpack")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnStimpack")
+		TNT1 A 0 A_Jump(200, "SpawnStimpack")
+		TNT1 A 0 A_Jump(200, "SpawnStimpack3")
+		TNT1 A 0 A_Jump(200, "SpawnBerserkStimpack")
 	SpawnStimpack:
 		TNT1 A 0 A_SpawnItemEx("DropedStimpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnStimpack3:
+		TNT1 A 0 A_SpawnItemEx("DropedStimpack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnBerserkStimpack:
+		TNT1 A 0 A_SpawnItemEx("DropedStimpack3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceStimpack:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Stimpack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }

@@ -5,7 +5,7 @@ ACTOR CMEShell : Ammo
 	Inventory.PickupMessage "Picked up 4 Shells."
 	Inventory.Amount 4
 	Inventory.MaxAmount 300
-	Ammo.BackpackAmount 8
+	Ammo.BackpackAmount 4
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "SHELA0"
 	Inventory.Pickupsound "SHELPKUP"

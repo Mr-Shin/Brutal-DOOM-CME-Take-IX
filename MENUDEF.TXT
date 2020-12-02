@@ -16,7 +16,6 @@ OptionMenu "OptionsMenu"
 	Submenu "Sound Options",			"SoundOptions"
 	Submenu "Display Options",			"VideoOptions"
 	Submenu "Set video mode",			"VideoModeMenu"
-	Submenu "FlashLight Options",		"BDDFLO"
 	StaticText " "
 	SafeCommand "Reset to defaults",	"reset2defaults"
 	SafeCommand	"Reset to last saved",	"reset2saved"
@@ -79,6 +78,11 @@ OptionMenu "BrutalOptions"
 
   
   StaticText "===== Client Options ====="
+  
+  Option "Max Wall Decals", "cl_maxdecals", "maxdecals"
+  Option "Max Gibs and Blood Pools", "sv_corpsequeuesize", "maxgibs"
+  StaticText " "
+  
   Option "Blood Amount", "zdoombrutalblood", "BrutalBlood"
   StaticText "How much blood you want to see?"
   StaticText " "
@@ -102,6 +106,9 @@ OptionMenu "BrutalOptions"
   StaticText " "
   StaticText " "
   
+  Submenu "FlashLight Options",		"BDDFLO"
+  StaticText " "
+  StaticText " "
   
   StaticText "===== Server options ====="
   StaticText "(Requires map restart to take effect)"  
@@ -113,26 +120,30 @@ OptionMenu "BrutalOptions"
   Option "Spawning Preset", "CMESpawnBalance", "CMESpawnOptions"
   StaticText " "
   StaticText " "
-  Option "Disable Marines", "bd_disablemarines", "YesOrNo"
-  Option "Casings Stay on floor forever", "bd_infinitecasings", "YesOrNo"
   
-  //Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
+  Option "Disable Marines", "bd_disablemarines", "YesOrNo"
+  StaticText " "
+  StaticText " "
+  
+  Option "Casings Stay on floor forever", "bd_infinitecasings", "YesOrNo"
+  StaticText " "
+  StaticText " "
+ 
+  Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
   StaticText "Improves several maps with better textures,"
   StaticText  "new decorations and sometimes new enemies."
   StaticText " "
   
   
- // Option "Level Enhancement System - Disable Voxels", "bd_voxeldec", "YesorNoFalse"
+  Option "Level Enhancement System - Disable Voxels", "bd_voxeldec", "YesorNoFalse"
   StaticText "Disable voxel decorations to prevent crashes on Android."
   StaticText " "
   
-  //Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
+  Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
   StaticText " "
   
-  //Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
-  StaticText " "
-  
-  //Option "Water Ripple Effects", "bd_disablewaterripples2", "YesOrNoFalse"
+
+  Option "Water Ripple Effects", "bd_disablewaterripples2", "YesOrNoFalse"
   StaticText " " 
  
 }
@@ -173,6 +184,31 @@ OptionValue "DisabledOption"
 	1, "Disabled"
 }
 
+OptionValue "maxdecals"
+{
+	1, "0"
+	128, "128"
+	512, "512"
+	1024, "1024"
+	2056, "2056"
+	5102, "5102"
+	9999, "9999"
+}
+
+
+OptionValue "maxgibs"
+{
+	1, "0"
+	64, "64"
+	100, "100"
+	500, "500"
+	1000, "1000"
+	2000, "2000"
+	5000, "5000"
+	10000, "10000"
+	25000, "25000"
+	50000, "50000"
+}
 
 
 ListMenu "MainMenu"

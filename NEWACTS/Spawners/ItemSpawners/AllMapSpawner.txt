@@ -7,23 +7,36 @@ Actor AllMapSpawner : CMEItemSpawner Replaces AllMap
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleAllMapSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnAllMap")
+		TNT1 A 0 A_Jump(256, "SpawnAllMap", "SpawnAllMap2")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap2")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap2")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap2")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap")
+		TNT1 A 0 A_Jump(200, "SpawnAllMap2")
 	SpawnAllMap:
 		TNT1 A 0 A_SpawnItemEx("DropedAllMap",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnAllMap2:
+		TNT1 A 0 A_SpawnItemEx("DropedAllMap2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceAllMap:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("AllMap_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	
 	}
 }

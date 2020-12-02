@@ -16,6 +16,10 @@ Actor LookingForPlayer : Inventory
 {
 inventory.maxamount 30
 }
+Actor FootPrintAlternate : Inventory
+{
+inventory.maxamount 1
+}
 
 Actor BrutalCounter : Inventory
 {
@@ -32,9 +36,57 @@ Actor oneliner: Inventory
 inventory.maxamount 1
 }
 
+Actor IsFloating : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsStandingStill : Inventory
+{
+inventory.maxamount 1
+} 
+
+Actor RedBloodSplatterz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor GreenBloodSplatterz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BlueBloodSplatterz : Inventory
+{
+inventory.maxamount 1
+}
 
 
 
+Actor WaterSplasherz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SlimeSplasherz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SludgeSplasherz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor LavaSplasherz : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BloodSplasherBlueBlood : Inventory
+{
+inventory.maxamount 1
+}
 
 Actor advtaunting: Inventory
 {
@@ -317,6 +369,11 @@ Actor HeavyStrikeUpWard : Inventory
 inventory.maxamount 1
 }
 
+Actor AnimuGore : Inventory//bloodammount_666 easter egg
+{
+inventory.maxamount 1
+}
+
 
 
 
@@ -379,6 +436,10 @@ Actor TurningLeft123 : Inventory
 inventory.maxamount 1
 }
 
+Actor PoorGuyBurningLife : Inventory
+{
+inventory.maxamount 20
+}
 
 
 Actor UsedStamina : Inventory
@@ -516,6 +577,12 @@ Actor HasPlasmaWeapon: Inventory
 inventory.maxamount 1
 }
 
+
+Actor BloodSplasherz : Inventory
+{
+inventory.maxamount 1
+}
+
 Actor SawSelected: Inventory
 {
 inventory.maxamount 1
@@ -536,6 +603,361 @@ inventory.maxamount 1
 }
 
 Actor SawFireSeq2: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor SwitchToFist : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor DMGame : Inventory 
+{
+inventory.maxamount 1
+}
+
+Actor IsOverSand : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsOverNukage : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor TurboReload : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsRunning : Inventory
+{
+inventory.maxamount 1
+}
+
+// Floor Definitions
+Actor IsOverDirt : Inventory {inventory.maxamount 1}
+Actor IsOverGravel : Inventory {inventory.maxamount 1}
+Actor IsOverMetal : Inventory {inventory.maxamount 1}
+Actor IsOverMetal2 : Inventory {inventory.maxamount 1}
+Actor IsOverRock : Inventory {inventory.maxamount 1}
+Actor IsOverSnow : Inventory {inventory.maxamount 1}
+Actor IsOverWood : Inventory {inventory.maxamount 1}
+Actor IsOverTile : Inventory {inventory.maxamount 1}
+Actor IsOverTile2 : Inventory {inventory.maxamount 1}
+Actor IsOverSlimy : Inventory {inventory.maxamount 1}
+
+Actor ChainsawHitRed : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor ChainsawHitBlue : Inventory
+{
+inventory.maxamount 1 
+}
+
+Actor ChainsawHitGreen : Inventory
+{
+inventory.maxamount 1 
+}
+
+ACTOR SKLabguy : Inventory
+{
+Inventory.MaxAmount 1
+}
+Actor LabGuyToken1 : Inventory
+{inventory.maxamount 1}
+
+Actor LabGuyToken2 : Inventory
+{inventory.maxamount 1}
+
+Actor LabGuyToken3 : Inventory
+{inventory.maxamount 1}
+
+Actor GrabbedAZombieCivilian : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor ChainsawHitRedChecker : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor MarkForDeletion : Inventory
+{
+inventory.maxamount 1
+}
+
+
+ACTOR Token1 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR Token2 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR Token3 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR Token4 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+
+Actor PitchFrontToken : Inventory{inventory.maxamount 20}
+Actor PitchBackToken : Inventory{inventory.maxamount 20}
+
+Actor PitchFrontToken2 : Inventory{inventory.maxamount 20}
+Actor PitchBackToken2 : Inventory{inventory.maxamount 20}
+
+Actor BDECNukageChecker : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor BDECLightCheckerRed : Inventory
+{
+inventory.maxamount 1
+}
+Actor BDECLightCheckerOrange : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BDECLightCheckerBlue : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BDECLightCheckerGreen : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BDECLightCheckerWhite : Inventory
+{
+inventory.maxamount 1
+}
+
+ACTOR VolcabusFatality : Inventory
+{
+Inventory.MaxAmount 1
+}
+ACTOR VolcabusFatality2 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR ArachnotronXFatality : Inventory
+{
+Inventory.MaxAmount 1
+}
+ACTOR ArachnotronXFatality2 : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR Arachnotron2FatalityA : Inventory
+{
+Inventory.MaxAmount 1
+}
+ACTOR Arachnotron2FatalityB : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor CeaseMorph : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsInATank : Inventory
+{
+inventory.maxamount 1
+}
+Actor HeliIsLeft : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor HeliIsRight : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor FootStepDisabled : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsPickable : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Crashed : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor Accident : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BarrelExpMeasure : Inventory
+{
+inventory.maxamount 950
+}
+Actor BarrelExpMeas2 : Inventory
+{
+inventory.maxamount 950
+}
+
+
+Actor GoSwitchWeaponVersion : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v8Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v9Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v10Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v11Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v12Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v13Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v14Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v15Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v16Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v17Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v18Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v19Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v20Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v20bWeapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v21Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v21v2Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v21v3Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v21v4Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor v21v5Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BDHCEWeapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor PB1Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor PB2Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor PB3Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor BDDE366Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IB38Weapon : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IB40Weapon : Inventory
 {
 inventory.maxamount 1
 }

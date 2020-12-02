@@ -1,0 +1,31 @@
+actor HasteSphere : PowerupGiver 
+{
+	Game Doom
+	inventory.pickupmessage "You got the Haste Sphere. Your body trembles with energy..."
+	inventory.maxamount 0
+	powerup.duration -30
+	powerup.color "FF FF 00", 0.1
+	powerup.type Speed
+	-COUNTITEM
+	+FloatBob
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "DEM"
+	States
+	{
+	Spawn:
+	//TNT1 A 2 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	TNT1 AA 0
+    HAST AAABBBCCC 2 A_SpawnItem("YellowFlareMedium",0,30)
+    Goto Spawn+2
+	
+	ReplaceTraditional:
+		TNT1 A 1
+		Stop
+	
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Print ("You got the Haste Sphere. Your body trembles with energy...")
+		Stop
+	}
+}

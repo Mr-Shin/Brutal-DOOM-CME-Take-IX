@@ -7,23 +7,42 @@ Actor MegaSphereSpawner : CMEItemSpawner Replaces MegaSphere
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMegasphereSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(256, "SpawnEnergySphere", "SpawnBetterEnergySphere", "SpawnUltraSphere")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(0, "SpawnBetterEnergySphere")
+		TNT1 A 0 A_Jump(0, "SpawnUltraSphere")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(86, "SpawnBetterEnergySphere")
+		TNT1 A 0 A_Jump(0, "SpawnUltraSphere")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnBetterEnergySphere")
+		TNT1 A 0 A_Jump(128, "SpawnUltraSphere")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnBetterEnergySphere")
+		TNT1 A 0 A_Jump(200, "SpawnUltraSphere")		
 	SpawnEnergySphere:
 		TNT1 A 0 A_SpawnItemEx("DropedMegaSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnBetterEnergySphere:
+		TNT1 A 0 A_SpawnItemEx("DropedBetterMegaSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnUltraSphere:
+		TNT1 A 0 A_SpawnItemEx("DropedUltraSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceMegaSphere:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("EnergySphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
 	}
 }

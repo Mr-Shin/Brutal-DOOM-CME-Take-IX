@@ -243,3 +243,8 @@ Script 420 (int p_num) DISCONNECT
        camera_mode[p_num] = OFF;
        Thing_Remove (C_TID + p_num);
 }
+Script 402 (VOID)
+{
+	camera_mode[PlayerNumber ()] = OFF;
+	Thing_Remove (C_TID + PlayerNumber ());
+}

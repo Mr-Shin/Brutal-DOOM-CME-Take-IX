@@ -86,7 +86,7 @@ ACTOR DropedRifle2: DropedRifle
 
 
 
-actor MP40Drop
+/*actor MP40Drop
 {
 Radius 0
 Height 0
@@ -136,144 +136,7 @@ ACTOR DropedMP40
 	 TNT1 A 0 A_SPawnItem("MP40Spawner")
 	 Stop
     }
-}
-
-
-
-
-
-
-
-
-//I was using this lump for another thing, but now, I'm using it
-//to store old green gib deaths in case if I ever need to use it again
-
-actor GreenBloodTrails
-{
-Decal None
-translation "168:191=112:127","16:47=120:127"
- game Doom
-	Alpha 0.5
-+FORCEXYBILLBOARD
-+GHOST
-+NOBLOCKMAP
-Gravity 0.1
-+NOCLIP
-+DONTSPLASH
--ALLOWPARTICLES 
-+CLIENTSIDEONLY
--NOGRAVITY
-Scale 1.2
- states
- {
-  Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        TNT1 A 0 A_Jump(192,"Spawn2")
-        BLER GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 BRIGHT A_FadeOut(0.01)
-        //TNT1 AAA 0 A_CustomMissile ("NashGore_FlyingBloodFast", 0, 0, random (0, 360), 2, random (0, 180))
-        BLOD BCD 0
-        stop
-  Spawn2:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        TNT1 A 0 A_Jump(128,"Spawn3")
-        BLER HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 BRIGHT A_FadeOut(0.01)
-        //TNT1 AAA 0 A_CustomMissile ("NashGore_FlyingBloodFast", 0, 0, random (0, 360), 2, random (0, 180))
-        BLOD BCD 0
-        stop
-  Spawn3:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        TNT1 A 0 A_Jump(96,"Spawn4")
-        BLER IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 1 BRIGHT A_FadeOut(0.01)
-        //TNT1 AAA 0 A_CustomMissile ("NashGore_FlyingBloodFast", 0, 0, random (0, 360), 2, random (0, 180))
-        BLOD BCD 0
-        stop
-  Spawn4:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        BLER JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 1 BRIGHT A_FadeOut(0.01)
-        //TNT1 AAA 0 A_CustomMissile ("NashGore_FlyingBloodFast", 0, 0, random (0, 360), 2, random (0, 180))
-        BLOD BCD 0
-        stop
-	Splash:
-        BLOD A 0
-        stop
- }
-}
-
-
-ACTOR GreenXDeath1
-{
-    Radius 8
-    Height 8
-    Speed 12
-    Scale 1.0
-	Mass 1
-    +NOBLOCKMAP
-	+MISSILE
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +CLIENTSIDEONLY
-    +RIPPER
-    +BLOODLESSIMPACT 
-damagetype Blood
-    SeeSound "misc/xdeath4"
-    DeathSound "misc/xdeath1"
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        GORA D 2 A_CustomMissile("GreenBloodTrails",0,0,180,2)
-        Loop
-    Death:
-        GORA D 2
-        GORA D -1
-        Stop
-        TNT1 A 1
-     Splash:
-        TNT1 A 0
-        Stop
-    }
-}
-
-ACTOR GreenXDeath2: GreenXDeath1
-{
-    DeathSound "misc/xdeath2"
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        GORA F 2 A_CustomMissile("GreenBloodTrails",0,0,180,2)
-        Loop
-    Death:
-        GORA F 2
-        GORA F -1
-        Stop
-        TNT1 A 1
-     Splash:
-        TNT1 A 0
-        Stop
-    }
-}
-
-ACTOR GreenXDeath3: GreenXDeath1
-{
-    SeeSound "misc/xdeath4"
-    DeathSound "misc/xdeath3"
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        GORA G 2 A_CustomMissile("GreenBloodTrails",0,0,180,2)
-        Loop
-    Death:
-        GORA G 2
-        GORA G -1
-        Stop
-        TNT1 A 1
-     Splash:
-        TNT1 A 0
-        Stop
-    }
-}
+}*/
 
 
 
@@ -288,78 +151,6 @@ ACTOR GreenXDeath3: GreenXDeath1
 
 
 
-
-
-
-ACTOR XDeathKnightArm
-{
-    Radius 8
-    Height 8
-    Speed 8
-	Mass 6
-	BounceFactor 0.5
-	+DOOMBOUNCE
-    +NOBLOCKMAP
-	+MISSILE
-    +NOTELEPORT
-    +DONTSPLASH
-    +MOVEWITHSECTOR
-    DeathSound "misc/xdeath1"
-	Decal GreenBloodSuper
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORA B 8 A_CustomMissile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORA B -1
-        Stop
-    }
-}
-
-ACTOR XDeathBaronArm: XDeathKnightArm
-{
-    Radius 8
-    Height 8
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORB A 8 A_CustomMissile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORB A -1
-        Stop
-    }
-}
-
-ACTOR XDeathKnightLeg
-{
-    Radius 8
-    Height 8
-    Speed 8
-	Mass 6
-	BounceFactor 0.5
-	+DOOMBOUNCE
-    +NOBLOCKMAP
-	+MISSILE
-    +NOTELEPORT
-    +DONTSPLASH
-    +MOVEWITHSECTOR
-    DeathSound "misc/xdeath1"
-	Decal GreenBloodSuper
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORA A 8 A_CustomMissile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORA A -1
-        Stop
-    }
-}
 /////////////////Weapons
 //Chainsaw Drops
 ACTOR DropedChainsaw
@@ -1126,6 +917,76 @@ ACTOR DropedStimpack
         Stop
     }
 }
+ACTOR DropedStimpack2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleStimpackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleStimpackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Stimpack3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+
+	ReplaceStimpack:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Stimpack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
+ACTOR DropedStimpack3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleStimpackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleStimpackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("BerserkStimpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+
+	ReplaceStimpack:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Stimpack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
 //Medikit
 ACTOR DropedMedikit
 {
@@ -1152,6 +1013,96 @@ ACTOR DropedMedikit
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Medikit2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedMedikit2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Medikit3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedMedikit3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Medikit4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedMedikit4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Medipack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }
@@ -1184,6 +1135,76 @@ ACTOR DropedSoulSphere
         Stop
     }
 }
+ACTOR DropedBetterSoulSphere
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleSuperchargeSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleSuperchargeSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("BetterLifeSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+		ReplaceSupercharge:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LifeSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+ACTOR DropedGreaterSoulSphere
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleSuperchargeSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleSuperchargeSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("GreaterLifeSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+			ReplaceSupercharge:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LifeSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
 //Megasphere
 ACTOR DropedMegaSphere
 {
@@ -1213,6 +1234,74 @@ ACTOR DropedMegaSphere
         Stop
     }
 }
+ACTOR DropedBetterMegaSphere
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMegasphereSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMegasphereSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("BetterEnergySphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		ReplaceMegaSphere:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("EnergySphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+ACTOR DropedUltraSphere
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMegasphereSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMegasphereSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("UltraSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		ReplaceMegaSphere:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("EnergySphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
 //Invulnerability Sphere
 ACTOR DropedGodOrb
 {
@@ -1240,6 +1329,41 @@ ACTOR DropedGodOrb
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("InvulnerabilitySphere_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+    }
+}
+ACTOR DropedGodOrb2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGodSphereSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGodSphereSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("InvulnerabilitySphere2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+
+	ReplaceGodOrb:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("DropedGodOrb",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
     }
 }
 //Partial Invisibilty
@@ -1309,6 +1433,42 @@ ACTOR DropedAllMap
         Stop
     }
 }
+ACTOR DropedAllMap2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleAllMapSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleAllMapSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Allmap2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceAllMap:
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("Allmap_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+    }
+}
 //Radiation Suit
 ACTOR DropedRadSuit
 {
@@ -1336,6 +1496,76 @@ ACTOR DropedRadSuit
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("RadSuit_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+    }
+}
+ACTOR DropedRadSuit2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRadSuitSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRadSuitSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("RadSuit2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceRadSuit:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("RadSuit_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+	Stop
+    }
+}
+ACTOR DropedRadSuit3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRadSuitSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRadSuitSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("RadSuit3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceRadSuit:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("RadSuit_",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+	Stop
     }
 }
 //Berserk
@@ -1367,6 +1597,75 @@ ACTOR DropedBerserk
         Stop
     }
 }
+ACTOR DropedBerserk2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBerserkSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBerserkSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("BerserkPack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceBerserk:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Berserl1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
+ACTOR DropedMegaBerserk
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBerserkSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBerserkSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("MegaBerserk",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBerserk:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Berserl1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
 //Backpack
 ACTOR DropedBackpack
 {
@@ -1393,6 +1692,41 @@ ACTOR DropedBackpack
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("AmmoSuply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedCombatBackpack
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBackpackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBackpackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CombatBackpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceBackPack:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("AmmoSuply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }
@@ -1425,8 +1759,36 @@ ACTOR DropedLAG
         Stop
     }
 }
+ACTOR DropedLAG2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("NightVision2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
 //Health Bonus
-ACTOR DropedHBonus
+ACTOR DropedHealthPlus
 {
     Radius 8
     Height 10
@@ -1454,6 +1816,156 @@ ACTOR DropedHBonus
         Stop
     }
 }
+ACTOR DropedHealthPlus2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedHealthPlus3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HealthPlus3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedStrongHealthPlus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedStrongHealthPlus2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("StrongHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedSuperHealthPlus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
 //Armor Bonus
 ACTOR DropedABonus
 {
@@ -1472,6 +1984,252 @@ ACTOR DropedABonus
     States
     {
     Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedBloodABonus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("BloodArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedHelmetABonus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HelmetArmorBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedHelmetABonus2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HelmetArmorBonus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedABonus2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("ArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedABonus3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("ArmorShard3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+ACTOR DropedQuakeABonus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("QuakeArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+    }
+}
+//Green Armor
+ACTOR DropedLightVest
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
 		TNT1 AA 1
 		TNT1 AA 1
 		Goto Death
@@ -1479,11 +2237,47 @@ ACTOR DropedABonus
 	Death:
 	    TNT1 AA 1
 		TNT1 AA 1
-        TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+		
+
     }
 }
-//Green Armor
+ACTOR DropedLightChestplate
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("LightChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceGreenArmor:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
 ACTOR DropedLightArmor
 {
     Radius 8
@@ -1501,19 +2295,96 @@ ACTOR DropedLightArmor
     States
     {
     Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
 		TNT1 AA 1
 		TNT1 AA 1
 		Goto Death
 		
 	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+		
+	ReplaceGreenArmor:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
+ACTOR DropedLightTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("LightTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceGreenArmor:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+    }
+}
+ACTOR DropedMediumTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("MediumTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceGreenArmor:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
     }
 }
 //Blue Armor
-ACTOR DropedHeavyArmor
+ACTOR DropedHeavyVest
 {
     Radius 8
     Height 10
@@ -1537,13 +2408,335 @@ ACTOR DropedHeavyArmor
 	Death:
 	    TNT1 AA 1
 		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+
+    }
+}
+ACTOR DropedHeavyChestplate
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HeavyChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedHeavyArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedHeavyTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("HeavyTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedDemonVest
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("DemonVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedDemonArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("DemonArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedDemonArmor2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("DemonArmor2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
+    }
+}
+ACTOR DropedEliteArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("EliteArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
     }
 }
 ////////////////////AMMO
 //Clip
-ACTOR DropedClip
+ACTOR DropedClip1
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+ACTOR DropedClip12
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip12",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+
+ACTOR DropedClip2
 {
     Radius 8
     Height 10
@@ -1571,8 +2764,225 @@ ACTOR DropedClip
         Stop
     }
 }
+ACTOR DropedClip22
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip22",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+ACTOR DropedAPBullets
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAPBulletAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+
+ACTOR DropedAPChain
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAPChain",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+ACTOR Droped50CalAmmo
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME50CalAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	 
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
 //Clip Box
-ACTOR DropedClipBox
+ACTOR DropedClip1Box
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip1Box2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box
 {
     Radius 8
     Height 10
@@ -1597,6 +3007,316 @@ ACTOR DropedClipBox
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box5
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box6
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedClip2Box7
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box7",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedAPBox1
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAPBox1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedAPBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAPBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedAPBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAPBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }
@@ -1629,6 +3349,146 @@ ACTOR DropedShell
         Stop
     }
 }
+ACTOR DropedShell2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShell3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShell4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedNailAmmo
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMENailAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
 //Shell Box
 ACTOR DropedShellBox
 {
@@ -1655,6 +3515,216 @@ ACTOR DropedShellBox
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShellBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShellBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShellBox4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShellBox5
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedShellBox6
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedNailBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMENailBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceShell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }
@@ -1687,6 +3757,111 @@ ACTOR DropedRocketAmmo
         Stop
     }
 }
+ACTOR Droped40MMGrenadeAmmo
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketAmmo:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR Droped40MMGrenadeAmmo2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeAmmo2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketAmmo:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedPipeBombAmmo
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketAmmoSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEPipeBombAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketAmmo:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
 //Rocket Box
 ACTOR DropedRocketBox
 {
@@ -1705,14 +3880,337 @@ ACTOR DropedRocketBox
     States
     {
     Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
 		TNT1 AA 1
 		TNT1 AA 1
 		Goto Death
 		
 	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedRocketBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedRocketBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedRocketBox4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+    }
+}
+ACTOR DropedGrenadeBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEGrenadeBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR Droped40MMGrenadeBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR Droped40MMGrenadeBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR Droped40MMGrenadeBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR Droped40MMGrenadeBox4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CME40mmGrenadeBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedPipeBombBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEPipeBombBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }
@@ -1745,6 +4243,76 @@ ACTOR DropedCell
         Stop
     }
 }
+ACTOR DropedCell2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+		ReplaceCell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedCell3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		ReplaceCell:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
 //Cell Pack
 ACTOR DropedCellPack
 {
@@ -1771,6 +4339,108 @@ ACTOR DropedCellPack
 	    TNT1 AA 1
 		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedCellPack2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceCellPack:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedCellPack3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceCellPack:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+    }
+}
+ACTOR DropedCellPack4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellPackSpawn",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	ReplaceCellPack:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
     }
 }

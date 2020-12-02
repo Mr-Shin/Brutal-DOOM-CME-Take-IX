@@ -1,0 +1,53 @@
+// Invulnerability Sphere ---------------------------------------------------
+
+ACTOR InvulnerabilitySphere_  : PowerupGiver 
+{
+	Game Doom
+	SpawnID 133
+	+COUNTITEM
+	+DONTGIB
+	+FloatBob
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Inventory.MaxAmount 0
+	Powerup.Type Invulnerable
+	Powerup.Color White //InverseMap
+	Inventory.PickupMessage "You found an Invulnerability Sphere!"
+	Inventory.PickupSound "INVUL"
+	States
+	{
+	Spawn:
+		PINV AAABBBCCCDDD 2 Bright A_SpawnItem("GreenFlareMedium",0,20)
+		Loop
+	}
+}
+
+
+// Invulnerability Sphere ---------------------------------------------------
+
+ACTOR InvulnerabilitySphere2  : PowerupGiver 
+{
+	Game Doom
+	SpawnID 133
+	+COUNTITEM
+	+DONTGIB
+	+FloatBob
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Inventory.MaxAmount 0
+		scale 0.6
+	Powerup.Type Invulnerable
+	Powerup.Color White //InverseMap
+	Inventory.PickupMessage "You found a DOOM 64 Invulnerability Sphere!"
+	Inventory.PickupSound "INVUL"
+	States
+	{
+	Spawn:
+		64P2 AAABBBCCCDDD 2 Bright A_SpawnItem("GreenFlareMedium",0,20)
+		Loop
+	}
+}
+
+

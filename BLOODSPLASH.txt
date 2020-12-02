@@ -1,13 +1,4 @@
 
-
-
-
-Actor BloodSplasherz : Inventory
-{
-inventory.maxamount 1
-}
-
-
 Actor SuperGoreSpawner
 {
 	Projectile
@@ -75,7 +66,7 @@ Gravity 0.05
 +CLIENTSIDEONLY
 -NOGRAVITY
 +THRUACTORS
-Scale 1.0
+Scale 2.0
  states
  {
   Spawn:
@@ -244,7 +235,6 @@ Stop
 ACTOR BloodSplasher2
 {
 	Game Doom
-    damagefactor "Trample", 0.0
 	DamageType Blood
 	Health 1
 	Radius 1
@@ -257,12 +247,14 @@ ACTOR BloodSplasher2
     +NODAMAGETHRUST
     +PIERCEARMOR
 	+BLOODLESSIMPACT 
+	+THRUACTORS
+	+DONTSPLASH
 	DeathSound "None"
 	States
 	{
 	Spawn:
      BTRL A 1
-      TNT1 A 0 A_Explode(3,200)
+      //TNT1 A 0 A_Explode(3,300)
       Stop
 	}
 }
@@ -274,9 +266,32 @@ ACTOR BloodSplasher3: BloodSplasher2
 	{
 	Spawn:
      BTRL A 1
-      TNT1 A 0 A_Explode(3,600)
+      //TNT1 A 0 A_Explode(3,600)
       Stop
 	}
+}
+
+
+ACTOR BlueBloodSplasher2: BloodSplasher2
+{
+DamageType BlueBlood
+}
+
+ACTOR GreenBloodSplasher2: BloodSplasher2
+{
+DamageType GreenBlood
+}
+
+
+ACTOR WaterSplasher2: BloodSplasher2
+{
+DamageType Water
+}
+
+
+ACTOR WaterSplasher3: BloodSplasher3
+{
+DamageType Water
 }
 
 

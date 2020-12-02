@@ -7,23 +7,43 @@ Actor BerserkSpawner : CMEItemSpawner Replaces Berserk
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBerserkSpawn",0)
+		TNT1 A 1 A_SpawnItemEx("EvidenceCheckerbERSERk", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnBerserk")
+		TNT1 A 0 A_Jump(256, "SpawnBerserk", "SpawnBerserk2", "SpawnBerserk3")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnBerserk")
+		TNT1 A 0 A_Jump(0, "SpawnBerserk2")
+		TNT1 A 0 A_Jump(0, "SpawnBerserk3")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnBerserk")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk")
+		TNT1 A 0 A_Jump(86, "SpawnBerserk2")
+		TNT1 A 0 A_Jump(0, "SpawnBerserk3")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnBerserk")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk2")
+		TNT1 A 0 A_Jump(128, "SpawnBerserk3")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnBerserk")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk2")
+		TNT1 A 0 A_Jump(200, "SpawnBerserk3")	
 	SpawnBerserk:
 		TNT1 A 0 A_SpawnItemEx("DropedBerserk",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnBerserk2:
+		TNT1 A 0 A_SpawnItemEx("DropedBerserk2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnBerserk3:
+		TNT1 A 0 A_SpawnItemEx("DropedMegaBerserk",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceBerserk:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Berserl1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }

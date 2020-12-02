@@ -1,34 +1,149 @@
+//Performance
 user int bd_bloodamount	= 2;
 user int bd_lowgraphicsmode = 0;
-server int bd_classicmonsters = 0;
-
-
-
 server int zdoombrutalblood	= 2;
 server int zdoombrutaljanitor = 0;
-
-
-
 server int isrunningzandronum = 1;
-
-
-
-server int bd_nobulletpenetration = 1;
-
-user int bd_shotgunstrap = 0;
-server int zdoombd_shotgunstrap = 0;
-
-
-
-server int bd_isnazilevel = 0;
-
 server int bd_disabledecorations = 0;
 server int bd_infinitecasings = 0;
+server int noscreensplash = 0;
+server int bd_voxeldec = 1;
+server int bd_disablewaterripples2 = 1;
+//Gameplay
+server int nodoomguytalk = 0;
+//Footsteps
+user float cl_step_volmul = 7.0;
+user float cl_step_delaymul = 1.0;
+server int bd_footstepsounds = 1;
+server int bd_disablemapenhancements = 0;
+server int bd_classicmonsters = 0;
+server int bd_nobulletpenetration = 1;
+user int bd_shotgunstrap = 0;
+server int zdoombd_shotgunstrap = 0;
 server int bd_disablemarines = 0;
 server int CMESpawnBalance = 1;
 user int bd_sbartype = 1;
+/////Disable Things\\\\\
+//Powerups
+//Soulsphere
+server int CME_NoBetterLifeSphere = 0;
+server int CME_NoGreaterLifeSphere = 0;
+//Megasphere
+server int CME_NoBetterEnergySphere = 0;
+server int CME_NoUltraSphere = 0;
+//Invulnerability Sphere
+Server int CME_NoInvulnerabilitySphere2 = 0;
+//Partial Invisibility
+server int CME_NoSuperBlurSphere = 0;
+//Computer Area Map
+server int CME_NoAllMap2 = 0;
+//Radiation Shielding Suit
+server int CME_NoRadSuit2 = 0;
+server int CME_NoRadSuit3 = 0;
+//Berserk
+server int CME_NoBerserkPack2 = 0;
+server int CME_NoMegaBerserk = 0;
+//Backpack
+server int CME_NoBackpack2 = 0;
+server int CME_NoBackpack3 = 0;
+server int CME_NoCombatBackpack = 0;
+//Light Amplification Goggles
+server int CME_NoInfraredVisor2 = 0;
+//Items
+//Armor
+//Green Armor
+server int CME_NoLightChestPlate = 0;
+server int CME_NoLightArmor = 0;
+server int CME_NoLightTechArmor = 0;
+server int CME_NoMediumTechArmor = 0;
+//Blue Armor
+server int CME_NoHeavyChestplate = 0;
+server int CME_NoHeavyArmor = 0;
+server int CME_NoHeavyTechArmor = 0;
+server int CME_NoDemonVest = 0;
+server int CME_NoDemonArmor = 0;
+server int CME_NoDemonArmor2 = 0;
+server int CME_NoDemonTechArmor = 0;
+server int CME_NoEliteArmor = 0;
+//Stimpack
+server int CME_NoStimpack3 = 0;
+server int CME_NoBerserkStimpack = 0;
+//Medikit
+server int CME_NoMedikit3 = 0;
+server int CME_NoMedikit4 = 0;
+server int CME_NoMedipack = 0;
+//Armor Bonus
+server int CME_NoBloodArmorBonus = 0;
+server int CME_NoHelmetArmorBonus = 0;
+server int CME_NoHelmetArmorBonus2 = 0;
+server int CME_NoArmorShard2 = 0;
+server int CME_NoArmorShard3 = 0;
+server int CME_NoQuakeArmorShard = 0;
+//Health Bonus
+server int CME_NoHealthPlus2 = 0;
+server int CME_NoHealthPlus3 = 0;
+server int CME_NoStrongHealthPlus = 0;
+server int CME_NoStrongHealthPlus2 = 0;
+server int CME_NoSuperHealthPlus = 0;
+//Ammo
+//Clip
+server int CME_NoCMEClip1 = 0;
+server int CME_NoCMEClip12 = 0;
+server int CME_NoCMECLip22 = 0;
+server int CME_NoCMEAPBullets = 0;
+server int CME_NoCMEAPChain = 0;
+server int CME_NoCME50Cal = 0;
+//Clip Box
+server int CME_NoCMEClip1Box = 0;
+server int CME_NoCMEClip1Box2 = 0;
+server int CME_NoCMEClip2Box2 = 0;
+server int CME_NoCMEClip2Box3 = 0;
+server int CME_NoCMEClip2Box4 = 0;
+server int CME_NoCMEClip2Box5 = 0;
+server int CME_NoCMEClip2Box6 = 0;
+server int CME_NoCMEClip2Box7 = 0;
+server int CME_NoCMEAPBox1 = 0;
+server int CME_NoCMEAPBox2 = 0;
+server int CME_NoCMEAPBox3 = 0;
+//Shell
+server int CME_NoCMEShell2 = 0;
+server int CME_NoCMESHell3 = 0;
+server int CME_NoCMEShell4 = 0;
+server int CME_NOCMENailAmmo = 0;
+//Shell Box
+server int CME_NoCMEShellBox2 = 0;
+server int CME_NoCMESHellBox3 = 0;
+server int CME_NoCMEShellBOx4 = 0;
+server int CME_NoCMEShellBox5 = 0;
+server int CME_NoCMEShellBOx6 = 0;
+server int CME_NoCMENailBox = 0;
+//Rocket Ammo
+server int CME_NoCME40MMGrenadeAmmo = 0;
+server int CME_NoCME40MMGrenadeAmmo2 = 0;
+server int CME_NoCMEPipeBombAmmo = 0;
+//Rocket Box
+server int CME_NoCMERocketBox2 = 0;
+server int CME_NoCMERocketBox3 = 0;
+server int CME_NoCMERocketBox4 = 0;
+server int CME_NoCMEGrenadeBox = 0;
+server int CME_NoCME40MMGrenadeBox = 0;
+server int CME_NoCME40MMGrenadeBox2 = 0;
+server int CME_NoCME40MMGrenadeBox3 = 0;
+server int CME_NoCME40MMGrenadeBox4 = 0;
+server int CME_NoCMEPipeBombBox = 0;
+//Cell
+server int CME_NoCMECell2 = 0;
+server int CME_NoCMECell3 = 0;
+//Cell Pack
+server int CME_NoCMECellPack2 = 0;
+server int CME_NoCMECellPack3 = 0;
+server int CME_NoCMECellPack4 = 0;
+//Weapons
 
+//Flashlight
 user int b_flashlightvpos = 18;
 user int b_flashlighthpos = 0;
 user int b_flashlightmode = 0;
 user int b_flashlightlowq = 0;
+//Misc
+server int bd_isnazilevel = 0;

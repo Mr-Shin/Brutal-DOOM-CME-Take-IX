@@ -7,23 +7,63 @@ Actor HealthBonusSpawner : CMEItemSpawner Replaces HealthBonus
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleHealthBonusSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(256, "SpawnHealthPlus", "SpawnHealthPlus2", "SpawnHealthPlus3", "SpawnStrongHealthPlus", "SpawnStrongHealthPlus2", "SpawnSuperHealthPlus")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(200, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(128, "SpawnHealthPlus2")
+		TNT1 A 0 A_Jump(0, "SpawnHealthPlus3")
+		TNT1 A 0 A_Jump(0, "SpawnStrongHealthPlus")
+		TNT1 A 0 A_Jump(0, "SpawnStrongHealthPlus2")
+		TNT1 A 0 A_Jump(0, "SpawnSuperHealthPlus")		
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(128, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(128, "SpawnHealthPlus2")
+		TNT1 A 0 A_Jump(128, "SpawnHealthPlus3")
+		TNT1 A 0 A_Jump(0, "SpawnStrongHealthPlus")
+		TNT1 A 0 A_Jump(0, "SpawnStrongHealthPlus2")
+		TNT1 A 0 A_Jump(0, "SpawnSuperHealthPlus")	
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(1, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(0, "SpawnHealthPlus2")
+		TNT1 A 0 A_Jump(200, "SpawnHealthPlus3")
+		TNT1 A 0 A_Jump(200, "SpawnStrongHealthPlus")
+		TNT1 A 0 A_Jump(128, "SpawnStrongHealthPlus2")
+		TNT1 A 0 A_Jump(0, "SpawnSuperHealthPlus")	
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(1, "SpawnHealthPlus")
+		TNT1 A 0 A_Jump(0, "SpawnHealthPlus2")
+		TNT1 A 0 A_Jump(0, "SpawnHealthPlus3")
+		TNT1 A 0 A_Jump(0, "SpawnStrongHealthPlus")
+		TNT1 A 0 A_Jump(200, "SpawnStrongHealthPlus2")
+		TNT1 A 0 A_Jump(200, "SpawnSuperHealthPlus")	
 	SpawnHealthPlus:
-		TNT1 A 0 A_SpawnItemEx("DropedHBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		TNT1 A 0 A_SpawnItemEx("DropedHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnHealthPlus2:
+		TNT1 A 0 A_SpawnItemEx("DropedHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnHealthPlus3:
+		TNT1 A 0 A_SpawnItemEx("DropedHealthPlus3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnStrongHealthPlus:
+		TNT1 A 0 A_SpawnItemEx("DropedStrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnStrongHealthPlus2:
+		TNT1 A 0 A_SpawnItemEx("DropedStrongHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnSuperHealthPlus:
+		TNT1 A 0 A_SpawnItemEx("DropedSuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceHealthBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }

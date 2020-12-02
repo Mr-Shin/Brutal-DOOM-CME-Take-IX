@@ -24,10 +24,71 @@ script 647 enter
 	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
 	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
 	
+	if	(GetCvar("bd_disablemapenhancements") == 0) 
+	{ 
+	ReplaceTextures("FLOOR5_3", "METAL52");
+	ReplaceTextures("FLOOR5_2", "METAL52");
+	ReplaceTextures("FLAT5", "METAL53");
+	ReplaceTextures("FLOOR0_1", "METAL54");
+	ReplaceTextures("FLOOR0_3", "METAL55");
+	ReplaceTextures("FLOOR3_3", "METAL56");
+	ReplaceTextures("TLITE6_5", "LITGEN7B");
+	ReplaceTextures("TLITE6_6", "LITGEN9C");
+	ReplaceTextures("FLAT2", "FLAT2B");
+	ReplaceTextures("GRNLITE1", "GRNLIT1B");
+	}	
+	
 	
     //ClearInventory();
     GiveInventory("CheckMarines", 1);
 }
+
+Script "BDDisableMapEnhancements" (VOID)
+{
+if	(GetCvar("bd_disablemapenhancements") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+SCRIPT "BDInitiate" OPEN
+{
+	ReplaceTextures ("DSAND1", "SANDS1");
+	ReplaceTextures ("DSAND3", "SANDS1");
+	ReplaceTextures ("DSAND4", "SANDS1");
+	ReplaceTextures ("DSAND5", "SANDS1");
+	ReplaceTextures ("ETEX34", "SANDS1");
+	ReplaceTextures ("WALL81", "SANDS1");
+	ReplaceTextures ("ECEIL13", "SANDS1");
+	ReplaceTextures ("ECEIL15", "SANDS1");
+	ReplaceTextures ("GROUND20", "DESERT01");
+	ReplaceTextures ("SLUDGE01", "SLIME08");
+	ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
+	ReplaceTextures ("LFALL1", "LFALL01");
+	ReplaceTextures ("LAVA1", "LAVAFL");
+	ReplaceTextures ("LAVA2", "LAVAFL");
+	ReplaceTextures ("LAVA3", "LAVAFL");
+	ReplaceTextures ("LAVA4", "LAVAFL");
+	ReplaceTextures ("LAVA01", "LAVAFL");
+	ReplaceTextures ("LAVA02", "LAVAFL");
+	ReplaceTextures ("LAVA03", "LAVAFL");
+	ReplaceTextures ("LAVA04", "LAVAFL");
+	ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
+	ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
+	ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
+	ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
+	ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
+	
+	// Replaces similar textures so the flat checking scripts have less stuff
+	ReplaceTextures ("NUKAGE3", "NUKAGE1");
+	ReplaceTextures ("NUKAGE2", "NUKAGE1");
+	ReplaceTextures ("SLIME04", "SLIME01");
+	ReplaceTextures ("SLIME03", "SLIME01");
+	ReplaceTextures ("SLIME02", "SLIME01");
+	ReplaceTextures ("SLIME08", "SLIME05");
+	ReplaceTextures ("SLIME06", "SLIME05");
+	ReplaceTextures ("SLIME07", "SLIME05");
+	ReplaceTextures ("BLOOD3", "BLOOD1");
+	ReplaceTextures ("BLOOD2", "BLOOD1");
+}	
+
 
 script "BDRespawn" Respawn NET
 {
@@ -83,6 +144,13 @@ if	(GetCvar("zdoombrutalblood") == 666)
 
 }
 
+Script 794 (VOID)//Making limbs not bounce with explosives
+{
+if	(GetCvar("bd_lowgraphicsmode") == 1) { SetActorState(0, "NoColision", 1); }
+if	(GetCvar("zdoombrutaljanitor") == 1) { SetActorState(0, "NoColision", 1); }
+}
+
+
 
 Script "BDCHeckJanitor" (VOID)
 {
@@ -102,6 +170,31 @@ if	(GetCvar("bd_lowgraphicsmode") == 1) { SetActorState(0, "NoColision", 1); }
 if	(GetCvar("zdoombrutaljanitor") == 1) { SetActorState(0, "NoColision", 1); }
 }
 
+script "CombatBackPack" (void)
+{
+	SetAmmoCapacity("CMEClip1", 1000);
+	SetAmmoCapacity("CMEClip2", 1150);
+	SetAmmoCapacity("CMEAPBulletAmmo", 1350); //<-- Overly used statistic out of context.
+	SetAmmoCapacity("CME50CalAmmo", 900);
+	SetAmmoCapacity("CMEShell", 750);
+	SetAmmoCapacity("CMENailAmmo", 1000);
+	SetAmmoCapacity("CMERocketAmmo", 750);
+	SetAmmoCapacity("CMEGrenadeAmmo", 75);
+	SetAmmoCapacity("CME40mmGrenadeAmmo", 500);
+	SetAmmoCapacity("CMEPipeBombAmmo", 200);
+	SetAmmoCapacity("CMECell", 2000);
+	delay(2);
+	GiveInventory("Medikit",2);
+	GiveInventory("Backpack",1);
+	GiveInventory("BulletKit", 4);
+	GiveInventory("CMEClip2", 200);
+	GiveInventory("CMEShell",100); 
+	GiveInventory("CMERocketAmmo",100);
+	GiveInventory("CME40mmGrenadeAmmo", 50);
+	GiveInventory("CMECell",200);
+	GiveInventory("CMEGrenadeAmmo", 10);
+	
+}
 
 
 Script "BDCHeckJanitor4" (VOID)
@@ -246,6 +339,12 @@ script "GiveAllPlayersBlueSkull" (void) NET
         }
     }
 }
+
+Script "CheckRocketBackblast" (VOID)
+{
+if	(GetCvar("bd_rocketbackblast") == 0) { SetACtorState(0, "Disappear"); }
+}
+
 
 script "StarterPackDynamicProgressionFix" (void) NET
 {
@@ -477,4 +576,783 @@ Script "StarterPackWolfensteinBuzzsawFix" (void) NET
 Script "ChangeMarineScript" (void) NET
 {
 if	(GetCvar("bd_disablemarines") == 1) { SetActorState(0,"ReplaceBlursphere"); }
+}
+
+
+
+script 374 (void) // Footstep Sounds
+{  
+  
+  if (CheckActorFloorTexture(0, "FWATER1"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER2"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER3"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER4"))    GiveInventory("IsOverWater", 1);
+	
+  if (CheckActorFloorTexture(0, "NUKAGE1"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE2"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE3"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE4"))    GiveInventory("IsOverNukage", 1);
+	
+  	
+  if (CheckActorFloorTexture(0, "SLIME01"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME02"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME03"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME04"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME05"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME06"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME07"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME08"))    GiveInventory("IsOverSlime", 1);
+  
+  if (CheckActorFloorTexture(0, "SLIME09"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME10"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME11"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME12"))    GiveInventory("IsOverLava", 1);
+  
+  if (CheckActorFloorTexture(0, "LAVA1"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA2"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA3"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA4"))    GiveInventory("IsOverLava", 1);
+	
+  if (CheckActorFloorTexture(0, "BLOOD1"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD2"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD3"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD4"))    GiveInventory("IsOverBlood", 1);
+  
+  
+  
+  if (CheckActorFloorTexture(0, "FLOOR6_1"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "FLOOR6_2"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverGravel", 1);
+  if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverGravel", 1);
+  
+    
+  
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "FLAT10"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "GRASS1"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "GRASS2"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "GRASS3"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_4"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "RROCK16"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "RROCK17"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "RROCK18"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "RROCK19"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "RROCK20"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverDirt", 1);
+  
+  
+  
+  if (CheckActorFloorTexture(0, "CEIL1_2"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "FLAT1_3"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "FLAT4"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "FLAT20"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "FLAT23"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "FLAT22"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal", 1);
+  
+  if (CheckActorFloorTexture(0, "GATE1"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "GATE2"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "GATE3"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "GATE4"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverMetal2", 1);
+  
+  if (CheckActorFloorTexture(0, "FLAT1"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT1_1"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT1_2"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT1_3"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT5_6"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT5_7"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLAT5_8"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "FLOOR5_4"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "GRNROCK"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_2"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_3"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK03"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK03"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK04"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK09"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK10"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK11"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK12"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK13"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK14"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "RROCK15"))    GiveInventory("IsOverRock", 1);
+  
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSnow", 1);
+  
+  if (CheckActorFloorTexture(0, "CEIL1_1"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "CRATOP1"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "CRATOP2"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "FLAT5_1"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "FLAT5_2"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverWood", 1);
+  
+  
+  if (CheckActorFloorTexture(0, "CEIL1_3"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CEIL3_3"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CEIL3_4"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CEIL3_4"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "COMP01"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CONS1_1"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CONS1_5"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "CONS1_7"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT2"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT3"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT8"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT9"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT17"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT18"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLAT19"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR0_5"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR0_6"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR0_7"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR3_3"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR4_1"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "FLOOR4_5"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverTile", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverTile", 1);
+  
+  if (CheckActorFloorTexture(0, "DEM1_1"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "DEM1_2"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "DEM1_3"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "DEM1_4"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "DEM1_5"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "DEM1_6"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR4_6"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR4_8"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR5_1"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR5_2"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR5_3"))    GiveInventory("IsOverTile2", 1);
+  if (CheckActorFloorTexture(0, "FLOOR7_2"))    GiveInventory("IsOverTile2", 1);
+  
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSlimy", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSlimy", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSlimy", 1);
+  
+  if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
+  if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+  
+  
+
+}
+
+
+
+
+Script "BD_CheckBloodIntensity" (VOID)
+{
+
+	if	(GetCvar("isrunningzandronum") == 1)
+	{
+	if	(GetCvar( "bd_bloodamount") == 0) { SetActorState(0,"LowBlood"); }
+	if	(GetCvar( "bd_bloodamount") == 1) { SetActorState(0,"LowBlood"); }
+	if	(GetCvar( "bd_bloodamount") == 3) { SetActorState(0,"LotsOfBlood"); }
+	if	(GetCvar( "bd_bloodamount") >= 4) { SetActorState(0,"AbsurdBlood"); }
+	}
+
+
+	if	(GetCvar("isrunningzandronum") == 0)
+	{
+	if	(GetCvar("zdoombrutalblood") == 0) { SetActorState(0,"LowBlood"); }
+	if	(GetCvar("zdoombrutalblood") == 1) { SetActorState(0,"LowBlood"); }
+	if	(GetCvar("zdoombrutalblood") == 3) { SetActorState(0,"LotsOfBlood"); }
+	if	(GetCvar("zdoombrutalblood") == 4) { SetActorState(0,"AbsurdBlood"); }
+	}
+
+
+	if	(GetCvar("isrunningzandronum") == 1)
+	{
+		if	(GetCvar("bd_bloodamount") >= 5)
+			{
+			SetActorState(0,"AbsurdBlood"); 
+			GiveInventory("AnimuGore", 1);
+			}
+	}
+
+	if	(GetCvar("isrunningzandronum") == 0)
+	{
+	if	(GetCvar("zdoombrutalblood") >= 5)
+		{
+		SetActorState(0,"AbsurdBlood"); 
+		GiveInventory("AnimuGore", 1);
+		}
+	}
+
+}
+
+
+
+
+script 375 (void) ///Check if Over Dirt or Grass
+{
+  if (CheckActorFloorTexture(0, "GRASS1"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "GRASS2"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "GRASS3"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK19"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK20"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "FLAT10"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "FLAT5"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "FLOOR7_1"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_2"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_4"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK03"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK16"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK17"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "RROCK18"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "DESERT02"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "DESERT03"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGrass", 1);
+  if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
+  if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+
+}
+
+Script "BDCheckDecorations" (VOID)
+{
+if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+script "BD_CheckIfOverLiquid" (void) //Water Small Splash
+{
+	if (CheckActorFloorTexture(0, "FWATER1"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER2"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER3"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FWATER4"))    GiveInventory("IsOverWater", 1);
+	
+  if (CheckActorFloorTexture(0, "NUKAGE1"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE2"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE3"))    GiveInventory("IsOverNukage", 1);
+  if (CheckActorFloorTexture(0, "NUKAGE4"))    GiveInventory("IsOverNukage", 1);
+	
+  	
+  if (CheckActorFloorTexture(0, "SLIME01"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME02"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME03"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME04"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME05"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME06"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME07"))    GiveInventory("IsOverSlime", 1);
+  if (CheckActorFloorTexture(0, "SLIME08"))    GiveInventory("IsOverSlime", 1);
+  
+  if (CheckActorFloorTexture(0, "SLIME09"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME10"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME11"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "SLIME12"))    GiveInventory("IsOverLava", 1);
+  
+  if (CheckActorFloorTexture(0, "LAVA1"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA2"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA3"))    GiveInventory("IsOverLava", 1);
+  if (CheckActorFloorTexture(0, "LAVA4"))    GiveInventory("IsOverLava", 1);
+	
+  if (CheckActorFloorTexture(0, "BLOOD1"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD2"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD3"))    GiveInventory("IsOverBlood", 1);
+  if (CheckActorFloorTexture(0, "BLOOD4"))    GiveInventory("IsOverBlood", 1);
+}
+
+Script "BDCheckWaterRipples" (VOID)
+{
+if	(GetCvar("bd_disablewaterripples2") > 0) { GiveInventory("Clip2", 10); }
+}
+Script "BDFootsteps" (VOID)
+{
+if	(GetCvar("bd_footstepsounds") == 0) { GiveInventory("FootStepDisabled", 1); }
+}
+Script "CheckVoxels" (VOID)
+{
+if	(GetCvar("bd_voxeldec") == 0) { SetACtorState(0, "Disappear"); }
+}
+//Ammo Options
+//Clip 
+Script "ToggleClipSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMEClip1") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+	else if (GetCvar("CME_NoCMEClip12") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+	else if (GetCvar("CME_NoCMECLip22") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+	else if (GetCvar("CME_NoCMEAPBullets") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+	else if (GetCvar("CME_NoCMEAPChain") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+	else if (GetCvar("CME_NoCME50Cal") == 1)
+	{
+	SetActorState(0,"ReplaceClip",true);
+	}
+}
+//Clip Box
+Script "ToggleClipBoxSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMEClip1Box") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip1Box2") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box2") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box3") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box4") == 1)
+	{
+	SetActorState(0,"RepalceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box5") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box6") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEClip2Box7") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEAPBox1") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEAPBox2") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+else if (GetCvar("CME_NoCMEAPBox3") == 1)
+	{
+	SetActorState(0,"ReplaceClipBox",true);
+	}
+}
+//Shell
+Script "ToggleShellSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMEShell2") == 1)
+	{
+	SetActorState(0,"ReplaceShell",true);
+	}
+else if (GetCvar("CME_NoCMEShell3") == 1)
+	{
+	SetActorState(0,"ReplaceShell",true);
+	}
+else if (GetCvar("CME_NoCMEShell4") == 1)
+	{
+	SetActorState(0,"ReplaceShell",true);
+	}
+else if (GetCvar("CME_NoCMENailAmmo") == 1)
+	{
+	SetActorState(0,"ReplaceShell",true);
+	}
+}
+//Shell Box
+Script "ToggleShellBoxSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMEShellBox2") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+else if (GetCvar("CME_NoCMEShellBox3") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+else if (GetCvar("CME_NoCMEShellBox4") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+else if (GetCvar("CME_NoCMEShellBox5") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+else if (GetCvar("CME_NoCMEShellBox6") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+else if (GetCvar("CME_NoCMENailBox") == 1)
+	{
+	SetActorState(0, "ReplaceShellBox",true);
+	}
+}
+//Rocket Ammo
+Script "ToggleRocketAmmoSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCME40MMGrenadeAmmo") == 1)
+	{
+	SetActorState(0, "ReplaceRocketAmmo",true);
+	}
+else if (GetCvar("CME_NoCME40MMGrenadeAmmo2") == 1)
+	{
+	SetActorState(0, "ReplaceRocketAmmo",true);
+	}
+else if (GetCvar("CME_NoCMEPipeBombAmmo") == 1)
+	{
+	SetActorState(0, "ReplaceRocketAmmo",true);
+	}
+}
+//Rocket Box
+Script "ToggleRocketBoxSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMERocketBox2") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCMERocketBox3") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCMERocketBox4") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCMEGrenadeBox") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCME40MMGrenadeBox") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCME40MMGrenadeBox2") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCME40MMGrenadeBox3") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCME40MMGrenadeBox4") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+else if (GetCvar("CME_NoCMEPipeBombBox") == 1)
+	{
+	SetActorState(0, "ReplaceRocketBox",true);
+	}
+}
+//Cell
+Script "ToggleCellSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMECell2") == 1)
+	{
+	SetActorState(0, "ReplaceCell",true);
+	}
+else if (GetCvar("CME_NoCMECell3") == 1)
+	{
+	SetActorState(0, "ReplaceCell",true);
+	}
+}
+//Cell Pack
+Script "ToggleCellPackSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCMECellPack2") == 1)
+	{
+	SetActorState(0, "ReplaceCellPack",true);
+	}
+else if (GetCvar("CME_NoCMECellPack3") == 1)
+	{
+	SetActorState(0, "ReplaceCellPack",true);
+	}
+else if (GetCvar("CME_NoCMECellPack4") == 1)
+	{
+	SetActorState(0, "ReplaceCellPack",true);
+	}
+}
+//Power Ups
+//Spheres
+//SoulSpheres
+Script "ToggleSuperchargeSpawn" (VOID) NET
+{
+If (GetCvar("CME_NoBetterLifeSphere") == 1)
+	{
+	SetActorState(0, "ReplaceSupercharge",true);
+	}
+else if  (GetCvar("CME_NoGreaterLifeSphere") == 1)
+	{
+	SetActorState(0, "ReplaceSupercharge",true);
+	}
+}
+//Megasphere
+Script "ToggleMegasphereSpawn" (VOID) NET
+{
+If (GetCvar("CME_NoBetterEnergySphere") == 1)
+	{
+	SetActorState(0, "ReplaceMegaSphere",true);
+	}
+else if  (GetCvar("CME_NoUltraSphere") == 1)
+	{
+	SetActorState(0, "ReplaceMegaSphere",true);
+	}
+}
+//God Sphere
+Script "ToggleGodSphereSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoInvulnerabilitySphere2") == 1)
+	{
+	SetActorState(0, "ReplaceGodOrb",true);
+	}
+}
+//Stimpack
+Script "ToggleStimpackSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoStimpack3") == 1)
+	{
+	SetActorState(0, "ReplaceStimpack",true);
+	}
+else if (GetCvar("CME_NoBerserkStimpack") == 1)
+		{
+		SetActorState(0, "ReplaceStimpack",true);
+		}
+}
+//Medikit
+Script "ToggleMedikitSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoMedikit3") == 1)
+	{
+	SetActorState(0, "ReplaceMedikit",true);
+	}
+else if (GetCvar("CME_NoMedikit4") == 1)
+	{
+	SetActorState(0, "ReplaceMedikit",true);
+	}
+else if (GetCvar("CME_NoMedipack") == 1)
+	{
+	SetActorState(0, "ReplaceMedikit",true);
+	}
+}
+//Rad Suit
+Script "ToggleRadSuitSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoRadSuit2") == 1)
+	{
+	SetActorState(0, "ReplaceRadSuit",true);
+	}
+else if (GetCvar("CME_NoRadSuit3") == 1)
+	{
+	SetActorState(0, "ReplaceRadSuit",true);
+	}
+}
+//Berserk
+Script "ToggleBerserkSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoBerserkPack2") == 1)
+	{
+	SetActorState(0, "ReplaceBerserk",true);
+	}
+else if (GetCvar("CME_NoMegaBerserk") == 1)
+	{
+	SetActorState(0, "ReplaceBerserk",true);
+	}
+}
+//All Map
+Script "ToggleAllMapSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoAllMap2") == 1)
+	{
+	SetActorState(0, "ReplaceAllMap",true);
+	}
+}
+//LAV
+Script "ToggleLAVSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoInfraredVisor2") == 1)
+	{
+	SetActorState(0, "ReplaceLAV",true);
+	}
+}
+//Backpack
+Script "ToggleBackpackSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoCombatBackpack") == 1)
+	{
+	SetActorState(0, "ReplaceBackpack",true);
+	}
+}
+//Green Armor
+Script "ToggleGreenArmorSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoLightChestPlate") == 1)
+	{
+	SetActorState(0, "ReplaceGreenArmor",true);
+	}
+else if (GetCvar("CME_NoLightArmor") == 1)
+	{
+	SetActorState(0, "ReplaceGreenArmor",true);
+	}
+else if (GetCvar("CME_NoLightTechArmor") == 1)
+	{
+	SetActorState(0, "ReplaceGreenArmor",true);
+	}
+else if (GetCvar("CME_NoMediumTechArmor") == 1)
+	{
+	SetActorState(0, "ReplaceGreenArmor",true);
+	}
+}
+//Blue Armor
+Script "ToggleBlueArmorSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoHeavyChestplate") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoHeavyArmor") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoHeavyTechArmor") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoDemonVest") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoDemonArmor") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoDemonVest") == 1)
+	{
+	SetActorState(0, "CME_NoDemonArmor2",true);
+	}
+else if (GetCvar("CME_NoDemonTechArmor") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+else if (GetCvar("CME_NoEliteArmor") == 1)
+	{
+	SetActorState(0, "ReplaceBlueArmor",true);
+	}
+}
+//Health Bonus
+Script "ToggleHealthBonusSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoHealthPlus2") == 1)
+	{
+	SetActorState(0, "ReplaceHealthBonus",true);
+	}
+else if (GetCvar("CME_NoHealthPlus3") == 1)
+	{
+	SetActorState(0, "ReplaceHealthBonus",true);
+	}
+else if (GetCvar("CME_NoStrongHealthPlus") == 1)
+	{
+	SetActorState(0, "ReplaceHealthBonus",true);
+	}
+else if (GetCvar("CME_NoStrongHealthPlus2") == 1)
+	{
+	SetActorState(0, "ReplaceHealthBonus",true);
+	}
+else if (GetCvar("CME_NoSuperHealthPlus") == 1)
+	{
+	SetActorState(0, "ReplaceHealthBonus",true);
+	}
+}
+//Armor Bonus
+Script "ToggleArmorBonusSpawn" (VOID) NET
+{
+if (GetCvar("CME_NoBloodArmorBonus") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+else if (GetCvar("CME_NoHelmetArmorBonus") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+else if (GetCvar("CME_NoHelmetArmorBonus2") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+else if (GetCvar("CME_NoArmorShard2") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+else if (GetCvar("CME_NoArmorShard3") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+else if (GetCvar("CME_NoQuakeArmorShard") == 1)
+	{
+	SetActorState(0, "ReplaceArmorBonus",true);
+	}
+}
+script "CrueltyBonus" (VOID) NET
+{
+	if(GetCvar("nodoomguytalk") == 1)
+	{
+		
+		SetActorProperty(0, APROP_HEALTH, GetActorProperty(0,APROP_HEALTH)+5);
+	}
+	else
+	{
+		ActivatorSound("CrueltyBonus",127);
+		SetActorProperty(0, APROP_HEALTH, GetActorProperty(0,APROP_HEALTH)+5);
+	}
 }

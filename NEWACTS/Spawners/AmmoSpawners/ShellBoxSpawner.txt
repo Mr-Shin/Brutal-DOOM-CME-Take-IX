@@ -7,23 +7,66 @@ Actor ShellBoxSpawner : CMEItemSpawner Replaces ShellBox
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellBoxSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnShellBox")
+		TNT1 A 0 A_Jump(256, "SpawnShellBox", "SpawnShellBox2", "SpawnShellBox3", "SpawnShellBox4", "SpawnShellBox5", "SpawnShellBox6", "SpawnNailBox")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnShellBox")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox2")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox3")
+		TNT1 A 0 A_Jump(192, "SpawnShellBox4")
+		TNT1 A 0 A_Jump(200, "SpawnShellBox5")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox6")
+		TNT1 A 0 A_Jump(86, "SpawnNailBox")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnShellBox")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox")
+		TNT1 A 0 A_Jump(86, "SpawnShellBox2")
+		TNT1 A 0 A_Jump(32, "SpawnShellBox3")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox4")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox5")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox6")
+		TNT1 A 0 A_Jump(86, "SpawnNailBox")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnShellBox")
+		TNT1 A 0 A_Jump(86, "SpawnShellBox")
+		TNT1 A 0 A_Jump(86, "SpawnShellBox2")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox3")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox4")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox5")
+		TNT1 A 0 A_Jump(100, "SpawnShellBox6")
+		TNT1 A 0 A_Jump(86, "SpawnNailBox")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnShellBox")
+		TNT1 A 0 A_Jump(32, "SpawnShellBox")
+		TNT1 A 0 A_Jump(128, "SpawnShellBox2")
+		TNT1 A 0 A_Jump(200, "SpawnShellBox3")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox4")
+		TNT1 A 0 A_Jump(0, "SpawnShellBox5")
+		TNT1 A 0 A_Jump(200, "SpawnShellBox6")
+		TNT1 A 0 A_Jump(86, "SpawnNailBox")
 	SpawnShellBox:
 		TNT1 A 0 A_SpawnItemEx("DropedShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShellBox2:
+		TNT1 A 0 A_SpawnItemEx("DropedShellBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShellBox3:
+		TNT1 A 0 A_SpawnItemEx("DropedShellBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShellBox4:
+		TNT1 A 0 A_SpawnItemEx("DropedShellBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShellBox5:
+		TNT1 A 0 A_SpawnItemEx("DropedShellBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShellBox6:
+		TNT1 A 0 A_SpawnItemEx("DropedShellBox6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnNailBox:
+		TNT1 A 0 A_SpawnItemEx("DropedNailBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
 	}
 }

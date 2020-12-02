@@ -1,0 +1,33 @@
+Actor TimeSphere : PowerupGiver
+{
+  -CountItem
+  +NoGravity
+  +DONTGIB
+  +FloatBob
+  +Inventory.AutoActivate
+  +Inventory.AlwaysPickup
+  Inventory.MaxAmount 0
+  Inventory.pickupsound "TIMESPH"
+  Powerup.Type TimeFreezer
+  Powerup.Color GoldMap
+  Inventory.PickupMessage "You found a Time Sphere!"
+  Powerup.Duration -10
+  States
+  {
+  Spawn:
+	TNT1 A 2 //A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	TNT1 AA 0
+    TIME AAABBBCCCDDD 2 Bright
+    Goto SPawn+2
+	
+	ReplaceTraditional:
+		TNT1 A 1
+		Stop
+	
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Print ("You've found a Time Sphere!")
+		Stop
+	
+  }
+}

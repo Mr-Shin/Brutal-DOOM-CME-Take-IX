@@ -7,23 +7,42 @@ Actor CellSpawner : CMEItemSpawner Replaces Cell
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCellSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnCell")
+		TNT1 A 0 A_Jump(256, "SpawnCell", "SpawnCell2", "SpawnCell3")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnCell")
+		TNT1 A 0 A_Jump(0, "SpawnCell2")
+		TNT1 A 0 A_Jump(0, "SpawnCell3")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnCell")
+		TNT1 A 0 A_Jump(200, "SpawnCell")
+		TNT1 A 0 A_Jump(86, "SpawnCell2")
+		TNT1 A 0 A_Jump(0, "SpawnCell3")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnCell")
+		TNT1 A 0 A_Jump(200, "SpawnCell")
+		TNT1 A 0 A_Jump(200, "SpawnCell2")
+		TNT1 A 0 A_Jump(128, "SpawnCell3")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnCell")
+		TNT1 A 0 A_Jump(200, "SpawnCell")
+		TNT1 A 0 A_Jump(200, "SpawnCell2")
+		TNT1 A 0 A_Jump(200, "SpawnCell3")
 	SpawnCell:
 		TNT1 A 0 A_SpawnItemEx("DropedCell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnCell2:
+		TNT1 A 0 A_SpawnItemEx("DropedCell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnCell3:
+		TNT1 A 0 A_SpawnItemEx("DropedCell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceCell:
+		TNT1 A 1 
+		TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }

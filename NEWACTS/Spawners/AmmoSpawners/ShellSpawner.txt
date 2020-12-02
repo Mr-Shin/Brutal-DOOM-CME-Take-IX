@@ -7,23 +7,52 @@ Actor ShellSpawner : CMEItemSpawner Replaces Shell
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleShellSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnShell")
+		TNT1 A 0 A_Jump(256, "SpawnShell", "SpawnShell2", "SpawnShell3", "SpawnShell4", "SpawnNailAmmo")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnShell")
+		TNT1 A 0 A_Jump(128, "SpawnShell")
+		TNT1 A 0 A_Jump(200, "SpawnShell2")
+		TNT1 A 0 A_Jump(0, "SpawnShell3")
+		TNT1 A 0 A_Jump(0, "SpawnShell4")
+		TNT1 A 0 A_Jump(86, "SpawnNailAmmo")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnShell")
+		TNT1 A 0 A_Jump(128, "SpawnShell")
+		TNT1 A 0 A_Jump(128, "SpawnShell2")
+		TNT1 A 0 A_Jump(128, "SpawnShell3")
+		TNT1 A 0 A_Jump(0, "SpawnShell4")
+		TNT1 A 0 A_Jump(86, "SpawnNailAmmo")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnShell")
+		TNT1 A 0 A_Jump(128, "SpawnShell")
+		TNT1 A 0 A_Jump(86, "SpawnShell2")
+		TNT1 A 0 A_Jump(200, "SpawnShell3")
+		TNT1 A 0 A_Jump(200, "SpawnShell4")
+		TNT1 A 0 A_Jump(86, "SpawnNailAmmo")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnShell")
+		TNT1 A 0 A_Jump(86, "SpawnShell")
+		TNT1 A 0 A_Jump(0, "SpawnShell2")
+		TNT1 A 0 A_Jump(200, "SpawnShell3")
+		TNT1 A 0 A_Jump(200, "SpawnShell4")
+		TNT1 A 0 A_Jump(86, "SpawnNailAmmo")
 	SpawnShell:
 		TNT1 A 0 A_SpawnItemEx("DropedShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShell2:
+		TNT1 A 0 A_SpawnItemEx("DropedShell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShell3:
+		TNT1 A 0 A_SpawnItemEx("DropedShell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnShell4:
+		TNT1 A 0 A_SpawnItemEx("DropedShell4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnNailAmmo:
+		TNT1 A 0 A_SpawnItemEx("DropedNailAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
 	}
 }

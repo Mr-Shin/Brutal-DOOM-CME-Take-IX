@@ -1,5 +1,9 @@
 //Doomguy's Sounds
 
+IGOTSAW IGOTSAW
+PLSPICK PLSPICK
+BFGPICK BFGPICK
+
 $random FUCK { FUCK1 FUCK2 FUCK3 FUCK4 }
 FUCK1 FUCK1
 FUCK2 FUCK2
@@ -42,6 +46,8 @@ TAUNT16 TAUNT16
 TAUNT17 TAUNT17
 TAUNT18 TAUNT18
 $limit TAUNT0 1
+
+$random CrueltyBonus { TAUNT0 ONELIN }
 
 
 $random ONELIN { ONELIN01 ONELIN02 ONELIN03 ONELIN04 ONELIN05 ONELIN06 ONELIN07 ONELIN08 ONELIN09 ONELIN10 ONELIN11 ONELIN12}
@@ -777,6 +783,12 @@ SSPH SSPH
 MEGASPH MEGASPH
 INVISIBL INVISIBL
 RadSUp RadSUp
+DEM DEM
+DDMGPU DDMGPU
+TIMESPH TIMESPH
+BACKPCK BACKPCK
+RA1IF1 RA1IF1
+
 
 flashlight/click	click
 
@@ -869,3 +881,239 @@ ARMOR2	ARMOR2
 ARMOR3	ARMOR3
 ARMOR4	ARMOR4
 D3ARMOR D3ARMOR
+
+$random misc/hbonus_PickUp { RHSOUL1 RHSOUL2 RHSOUL3 RHSOUL4 RHSOUL5 S_HEALTH }
+RHSOUL1	RHSOUL1
+RHSOUL2	RHSOUL2
+RHSOUL3	RHSOUL3
+RHSOUL4	RHSOUL4
+RHSOUL5	RHSOUL5
+S_HEALTH S_HEALTH
+misc/E_HP_pickup E_HEALTH
+misc/L_HP_pickup L_HEALTH
+misc/N_HP_pickup N_HEALTH
+
+$random misc/abonus_PickUp { ABONUS ABONUS2 }
+ABONUS	ABONUS
+ABONUS2	ABONUS2
+ABONUS3	ABONUS3
+
+AXECLN AXECLN
+AXEHIT AXEHIT
+
+//From PTSD Simulator 2011 AKA Red Orchestra
+
+$random TorturedMarineBD { CPTRT01 CPTRT02 CPTRT03 CPTRT04 CPTRT05 CPTRT06 CPTRT07 CPTRT08 CPTRT09 CPTRT10 }
+CPTRT01 CPTRT01
+CPTRT02 CPTRT02
+CPTRT03 CPTRT04
+CPTRT05 CPTRT05
+CPTRT06 CPTRT06
+CPTRT07 CPTRT07
+CPTRT08 CPTRT08
+CPTRT09 CPTRT09
+CPTRT10 CPTRT10
+
+$rolloff  TorturedMarineBD 200 500
+
+$random TorturedMarineDieBD { CPTRT11 CPTRT12 CPTRT13 CPTRT14 }
+CPTRT11 CPTRT11
+CPTRT12 CPTRT12
+CPTRT13 CPTRT13
+CPTRT14 CPTRT14
+
+$random TorturedMarinePain { CPTRP1 CPTRP2 CPTRP3 }
+CPTRP1 CPTRP1
+CPTRP2 CPTRP2
+CPTRP3 CPTRP3
+
+
+FLEAS FLEAS
+
+//Monsters
+//"I WILL EAT YOUR SOUL" VOICES
+$random grunt/sight { grunt/sight1
+grunt/sight2
+grunt/sight3
+grunt/sight4
+grunt/sight5
+grunt/sight6
+grunt/sight7
+grunt/sight8
+grunt/sight9
+grunt/sight10
+grunt/sight11 }
+
+grunt/sight1	zomsit1
+grunt/sight2	zomsit2
+grunt/sight3	zomsit3
+grunt/sight4	zomsit4
+grunt/sight5	zomsit5
+grunt/sight6	zomsit6
+grunt/sight7	zomsit7
+grunt/sight8	zomsit8
+grunt/sight9	zomsit9
+grunt/sight10	zomsit10
+grunt/sight11	zomsit11
+
+$volume grunt/sight 0.80
+
+$random grunt/death
+{ grunt/death1
+grunt/death2
+grunt/death3
+grunt/death4
+grunt/death5
+grunt/death6
+grunt/death7 }
+
+grunt/death1	zomdth1
+grunt/death2	zomdth2
+grunt/death3	zomdth3
+grunt/death4	zomdth4
+grunt/death5	zomdth5
+grunt/death6	zomdth6
+grunt/death7	zomdth7
+
+$random grunt/pain 
+{ grunt/pain1
+grunt/pain2
+grunt/pain3
+grunt/pain4
+grunt/pain5
+grunt/pain6
+grunt/pain7
+grunt/pain8
+grunt/pain9
+grunt/pain10
+grunt/pain11 }
+
+grunt/pain1		zompn1
+grunt/pain2		zompn2
+grunt/pain3		zompn3
+grunt/pain4		zompn4
+grunt/pain5		zompn5
+grunt/pain6		zompn6
+grunt/pain7		zompn7
+grunt/pain8		zompn8
+grunt/pain9		zompn9
+grunt/pain10	zompn10
+grunt/pain11	zompn11
+
+$random grunt/active { grunt/active1 grunt/active2 grunt/active3 grunt/active4 grunt/active5 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING }
+grunt/active1	zomact1
+grunt/active2	zomact2
+grunt/active3	zomact3
+grunt/active4	zomact4
+grunt/active5	zomact5
+
+$volume grunt/active 0.76
+
+$random commando/sight { ZCSIT1 ZCSIT2 ZCSIT3 ZCSIT4 }
+ZCSIT1 ZCSIT1
+ZCSIT2 ZCSIT2
+ZCSIT3 ZCSIT3
+ZCSIT4 ZCSIT4
+ZCSIT5 ZCSIT5
+
+$random commando/pain { ZCPAIN1 ZCPAIN2 ZCPAIN3 ZCPAIN4 }
+ZCPAIN1 ZCPAIN1
+ZCPAIN2 ZCPAIN2
+ZCPAIN3 ZCPAIN3
+ZCPAIN4 ZCPAIN4
+
+$random commando/death { ZCDIE1 ZCDIE2 ZCDIE3 ZCDIE4 }
+ZCDIE1 ZCDIE1
+ZCDIE2 ZCDIE2
+ZCDIE3 ZCDIE3
+ZCDIE4 ZCDIE4
+
+$random commando/active { ZCI1 ZCI2 ZCI3 ZCI4 ZCI5 }
+ZCI1 ZCI1
+ZCI2 ZCI2
+ZCI3 ZCI3
+ZCI4 ZCI4
+ZCI5 ZCI5
+
+//Imp Sounds (Doom 3)
+$random imp/sight		{ imp/sight1  imp/sight2 imp/sight3 imp/sight4 }
+imp/sight1			imp_sig1
+imp/sight2			imp_sig2
+imp/sight3          imp_sig3
+imp/sight4          imp_sig4
+
+$random imp/pain { Imppain1 Imppain2 Imppain3 }
+Imppain1 IMP_P1
+Imppain2 IMP_P2
+Imppain3 IMP_P3
+
+$random imp/active { BREATH_1  BREATH_2 BREATH_3 }
+BREATH_1 BREATH_1
+BREATH_2 BREATH_2
+BREATH_3 BREATH_3
+$volume imp/active 0.85
+
+$random imp/death { IMP_DEA1 IMP_DEA2 IMP_DEA3 IMP_DEA4 }
+IMP_DEA1 IMP_DEA1
+IMP_DEA2 IMP_DEA2
+IMP_DEA3 IMP_DEA3
+IMP_DEA4 IMP_DEA4
+
+$random demon/sight { PINKSIT1 PINKSIT2 PINKSIT3 PINKSIT4 PINKSIT5 PINKSIT6 }
+PINKSIT1 PINKSIT1
+PINKSIT2 PINKSIT2
+PINKSIT3 PINKSIT3
+PINKSIT4 PINKSIT4
+PINKSIT5 PINKSIT5
+PINKSIT6 PINKSIT6
+
+$random demon/active { PINKI1 PINKI2 PINKI3 PINKI4 }
+PINKI1 PINKI1
+PINKI2 PINKI2
+PINKI3 PINKI3
+PINKI4 PINKI4
+
+$random demon/melee { PINKBIT1 PINKBIT2 PINKBIT3 PINKBIT4 }
+PINKBIT1 PINKBIT1
+PINKBIT2 PINKBIT2
+PINKBIT3 PINKBIT3
+PINKBIT4 PINKBIT4
+
+$random demon/pain { PINKPA1 PINKPA2 PINKPA3 PINKPA4 PINKPA5 PINKPA6 PINKPA7 }
+PINKPA1 PINKPA1
+PINKPA2 PINKPA2
+PINKPA3 PINKPA3
+PINKPA4 PINKPA4
+PINKPA5 PINKPA5
+PINKPA6 PINKPA6
+PINKPA7 PINKPA7
+
+$random demon/death { PINKDTH1 PINKDTH2 PINKDTH3 PINKDTH4 PINKDTH5 }
+PINKDTH1 PINKDTH1
+PINKDTH2 PINKDTH2
+PINKDTH3 PINKDTH3
+PINKDTH4 PINKDTH4
+PINKDTH5 PINKDTH5
+
+//Doom 3 Demon Sounds
+$random caco/melee { CACOMEL1 CACOMEL2 CACOMEL3 }
+CACOMEL1 CACOMEL1
+CACOMEL2 CACOMEL2
+CACOMEL3 CACOMEL3
+
+$random caco/sight { CACOSIT1 CACOSIT2 CACOSIT3 CACOSIT4 CACOSIT5 CACOSIT6 CACOSIT7 CACOSIT8 }
+CACOSIT1 CACOSIT1
+CACOSIT2 CACOSIT2
+CACOSIT3 CACOSIT3
+CACOSIT4 CACOSIT4
+CACOSIT5 CACOSIT5
+CACOSIT6 CACOSIT6
+CACOSIT7 CACOSIT7
+CACOSIT8 CACOSIT8
+
+//caco/death CACO_D1
+
+$random caco/pain { CACOPAI1 CACOPAI2 CACOPAI3 }
+CACOPAI1 CACO_P1
+CACOPAI2 CACO_P2
+CACOPAI3 CACO_P3

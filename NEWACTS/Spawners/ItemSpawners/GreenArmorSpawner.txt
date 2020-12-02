@@ -7,23 +7,56 @@ Actor GreenArmorSpawner : CMEItemSpawner Replaces GreenArmor
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleGreenArmorSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		TNT1 A 0 A_Jump(256, "SpawnLightVest", "SpawnLightChestplate", "SpawnLightArmor", "SpawnLightTechArmor", "SpawnMediumTechArmor")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		TNT1 A 0 A_Jump(256, "SpawnLightVest")
+		TNT1 A 0 A_Jump(0, "SpawnLightChestplate")
+		TNT1 A 0 A_Jump(0, "SpawnLightArmor")
+		TNT1 A 0 A_Jump(0, "SpawnLightTechArmor")
+		TNT1 A 0 A_Jump(0, "SpawnMediumTechArmor")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		TNT1 A 0 A_Jump(200, "SpawnLightVest")
+		TNT1 A 0 A_Jump(128, "SpawnLightChestplate")
+		TNT1 A 0 A_Jump(128, "SpawnLightArmor")
+		TNT1 A 0 A_Jump(0, "SpawnLightTechArmor")
+		TNT1 A 0 A_Jump(0, "SpawnMediumTechArmor")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
+		TNT1 A 0 A_Jump(128, "SpawnLightVest")
+		TNT1 A 0 A_Jump(128, "SpawnLightChestplate")
+		TNT1 A 0 A_Jump(200, "SpawnLightArmor")
+		TNT1 A 0 A_Jump(200, "SpawnLightTechArmor")
+		TNT1 A 0 A_Jump(0, "SpawnMediumTechArmor")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnGreenArmor")
-	SpawnGreenArmor:
+		TNT1 A 0 A_Jump(1, "SpawnLightVest")
+		TNT1 A 0 A_Jump(128, "SpawnLightChestplate")
+		TNT1 A 0 A_Jump(128, "SpawnLightArmor")
+		TNT1 A 0 A_Jump(200, "SpawnLightTechArmor")
+		TNT1 A 0 A_Jump(200, "SpawnMediumTechArmor")
+	SpawnLightVest:
+		TNT1 A 0 A_SpawnItemEx("DropedLightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnLightChestplate:
+		TNT1 A 0 A_SpawnItemEx("DropedLightChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnLightArmor:
 		TNT1 A 0 A_SpawnItemEx("DropedLightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnLightTechArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedLightTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnMediumTechArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedMediumTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceGreenArmor:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }

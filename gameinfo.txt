@@ -1,2 +1,2 @@
-STARTUPTITLE = "Sergeant_Mark_IV's BRUTAL DOOM version 20"
-STARTUPCOLORS = "FF0000", "000000"
+STARTUPTITLE = "East Supreme Kai's Brutal DOOM Combined Mods Edition"
+STARTUPCOLORS = "FF00FF", "000000"

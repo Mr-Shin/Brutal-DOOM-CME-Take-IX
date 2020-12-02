@@ -1,0 +1,38 @@
+ACTOR PowerDoubleDamage : PowerDamage
+{
+	Damagefactor "normal", 4
+}
+
+ACTOR DoubleSphere : PowerupGiver
+{
+	-COUNTITEM
+	+DONTGIB
+	+Floatbob
+	+NOGRAVITY
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.MaxAmount 0
+	Powerup.Type "PowerDoubleDamage"
+	Powerup.Duration -30
+	Translation "0:255=%[0,0,0]:[1,0,1]"
+	Powerup.Color 255, 0, 255, 0.150
+	Inventory.PickupSound "DDMGPU"
+  Inventory.PickupMessage "You got the Quad Damage Sphere. Your arsenal craves blood..."
+	States
+	{
+	Spawn:
+		//TNT1 A 2 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 0
+		DDMG AAABBBCCCDDD 2 Bright A_SpawnItem("PurpleFlareMedium",0,30)
+		Goto Spawn+2
+		
+	ReplaceTraditional:
+		TNT1 A 1
+		Stop
+		
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Print ("You got the Quad Damage sphere. You're arsenal craves blood...")
+		Stop
+	}
+}

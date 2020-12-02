@@ -7,23 +7,42 @@ Actor SoulSphereSpawner : CMEItemSpawner Replaces SoulSphere
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleSuperchargeSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(256, "SpawnLifeSphere", "SpawnBetterLifeSphere", "SpawnGreaterLifeSphere")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
 		TNT1 A 0 A_Jump(256, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(0, "SpawnBetterLifeSphere")
+		TNT1 A 0 A_Jump(0, "SpawnGreaterLifeSphere")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(86, "SpawnBetterLifeSphere")
+		TNT1 A 0 A_Jump(0, "SpawnGreaterLifeSphere")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnBetterLifeSphere")
+		TNT1 A 0 A_Jump(128, "SpawnGreaterLifeSphere")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnBetterLifeSphere")
+		TNT1 A 0 A_Jump(200, "SpawnGreaterLifeSphere")
 	SpawnLifeSphere:
 		TNT1 A 0 A_SpawnItemEx("DropedSoulSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnBetterLifeSphere:
+		TNT1 A 0 A_SpawnItemEx("DropedBetterSoulSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnGreaterLifeSphere:
+		TNT1 A 0 A_SpawnItemEx("DropedGreaterSoulSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceSupercharge:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("LifeSphere",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
 	}
 }

@@ -488,7 +488,7 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 AA 0 A_CustomMissile ("XDeath2b", 45, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath3b", 45, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160))
         BDSS PQRSTU 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		BDSS VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
@@ -590,7 +590,7 @@ Goto Death
 
 	Death.head:
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplode", 0, 62)
+		TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplodeRed", 0, 62)
         BADH A 9
         BADH B 9
         BADH C 9 A_BossDeath

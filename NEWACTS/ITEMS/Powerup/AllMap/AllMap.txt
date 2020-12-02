@@ -1,0 +1,31 @@
+ACTOR Allmap_ : MapRevealer
+{
+  +COUNTITEM
+  +INVENTORY.FANCYPICKUPSOUND
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 0
+  Inventory.PickupSound "misc/map_pickup"
+  Inventory.PickupMessage "$GOTMAP" // "Computer Area Map"
+  States
+  {
+  Spawn:
+    PMAP ABCDCB 6 Bright
+    Loop
+  }
+}
+
+ACTOR Allmap2 : MapRevealer
+{
+  +COUNTITEM
+  +INVENTORY.FANCYPICKUPSOUND
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 0
+  Inventory.PickupSound "misc/map_pickup"
+  Inventory.PickupMessage "$GOTMAP" // "Computer Area Map"
+  States
+  {
+  Spawn:
+    64MP ABCDCB 6 Bright
+    Loop
+  }
+}

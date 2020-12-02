@@ -10,7 +10,7 @@ Actor LightVest : BasicArmorPickup
 	Height 16
 	Inventory.Pickupmessage "Picked up the Light Security Vest."
 	Inventory.Icon "ARM1A0"
-	Armor.SavePercent 33.335
+	Armor.SavePercent 40.335
 	Armor.SaveAmount 100
     Inventory.PickupSound "D3ARMOR"
 	States
@@ -31,15 +31,15 @@ Actor LightChestplate : BasicArmorPickup
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the Light Security Chestplate."
-	Inventory.Icon "ARM2A0"
+	Inventory.Icon "4RM1C0"
 	Armor.SavePercent 40.335
 	Armor.SaveAmount 125
     Inventory.PickupSound "ARMOR2"
 	States
 	{
 	Spawn:
-		ARM2 A 10
-		ARM2 BBBBBB 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		4RM1 C 10
+		4RM1 DDDDDD 2 bright A_SpawnItem("GreenFlareMedium",0,10)
 		loop
 	}
 }
@@ -93,7 +93,7 @@ Actor LightTechArmor : BasicArmorPickup// Replaces GreenArmor
 Actor MediumTechArmor : BasicArmorPickup 
 {
   Game Doom
-  SpawnID 7080
+  SpawnID 68
   Radius 20
   Height 20
   Scale 1.30

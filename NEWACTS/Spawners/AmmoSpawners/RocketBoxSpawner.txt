@@ -7,23 +7,84 @@ Actor RocketBoxSpawner : CMEItemSpawner Replaces RocketBox
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleRocketBoxSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(256, "SpawnRocketBox", "SpawnRocketBox2", "SpawnRocketBox3", "SpawnRocketBox4", "Spawn40MMGrenadeBox", "Spawn40MMGrenadeBox2", "Spawn40MMGrenadeBox3", "Spawn40MMGrenadeBox4", "SpawnPipeBombBox")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox2")
+		TNT1 A 0 A_Jump(128, "SpawnRocketBox3")
+		TNT1 A 0 A_Jump(0, "SpawnRocketBox4")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox2")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox3")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox4")
+		TNT1 A 0 A_Jump(64, "SpawnPipeBombBox")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(128, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(128, "SpawnRocketBox2")
+		TNT1 A 0 A_Jump(128, "SpawnRocketBox3")
+		TNT1 A 0 A_Jump(128, "SpawnRocketBox4")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox2")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox3")
+		TNT1 A 0 A_Jump(0, "Spawn40MMGrenadeBox4")
+		TNT1 A 0 A_Jump(64, "SpawnPipeBombBox")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(0, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(0, "SpawnRocketBox2")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox3")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox4")
+		TNT1 A 0 A_Jump(128, "Spawn40MMGrenadeBox")
+		TNT1 A 0 A_Jump(128, "Spawn40MMGrenadeBox2")
+		TNT1 A 0 A_Jump(128, "Spawn40MMGrenadeBox3")
+		TNT1 A 0 A_Jump(128, "Spawn40MMGrenadeBox4")
+		TNT1 A 0 A_Jump(64, "SpawnPipeBombBox")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox2")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox3")
+		TNT1 A 0 A_Jump(200, "SpawnRocketBox4")
+		TNT1 A 0 A_Jump(200, "Spawn40MMGrenadeBox")
+		TNT1 A 0 A_Jump(200, "Spawn40MMGrenadeBox2")
+		TNT1 A 0 A_Jump(200, "Spawn40MMGrenadeBox3")
+		TNT1 A 0 A_Jump(200, "Spawn40MMGrenadeBox4")
+		TNT1 A 0 A_Jump(64, "SpawnPipeBombBox")
 	SpawnRocketBox:
 		TNT1 A 0 A_SpawnItemEx("DropedRocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnRocketBox2:
+		TNT1 A 0 A_SpawnItemEx("DropedRocketBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnRocketBox3:
+		TNT1 A 0 A_SpawnItemEx("DropedRocketBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnRocketBox4:
+		TNT1 A 0 A_SpawnItemEx("DropedRocketBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	Spawn40MMGrenadeBox:
+		TNT1 A 0 A_SpawnItemEx("Droped40MMGrenadeBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	Spawn40MMGrenadeBox2:
+		TNT1 A 0 A_SpawnItemEx("Droped40MMGrenadeBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	Spawn40MMGrenadeBox3:
+		TNT1 A 0 A_SpawnItemEx("Droped40MMGrenadeBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	Spawn40MMGrenadeBox4:
+		TNT1 A 0 A_SpawnItemEx("Droped40MMGrenadeBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnPipeBombBox:
+		TNT1 A 0 A_SpawnItemEx("DropedPipeBombBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceRocketBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
 	}
 }

@@ -53,7 +53,7 @@ Actor HeavyArmor : BasicArmorPickup
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the Mega Combat Armor."
-	Inventory.Icon "ARM8A0"
+	Inventory.Icon "ARM2A0"
 	Armor.Savepercent 70.335
 	Armor.Saveamount 275
     Inventory.PickupSound "ARMOR3"
@@ -61,11 +61,11 @@ Actor HeavyArmor : BasicArmorPickup
 	{
 	Spawn:
 		TNT1 A 0 A_CheckSight("Spawn2")
-		ARM8 A 10
-		ARM8 AAAAA 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		ARM2 A 10
+		ARM2 AAAAA 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
 		loop
 	Spawn2:
-		ARM8 A 19
+		ARM2 A 19
 		Goto Spawn	
 	}
 }
@@ -190,7 +190,7 @@ Actor DemonTechArmor : BasicArmorPickup
 Actor EliteArmor : BasicArmorPickup 
 {
   Game Doom
-  SpawnID 7090
+  SpawnID 69
   Radius 20
   Height 20
   Scale 1.30
@@ -214,3 +214,8 @@ Actor EliteArmor : BasicArmorPickup
 		Goto Spawn
   }
 }
+
+
+
+
+

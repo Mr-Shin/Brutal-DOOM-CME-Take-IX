@@ -95,7 +95,11 @@ Script 307 (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-
+Script 1997 (VOID) NET
+{
+ GiveInventory("GoSwitchWeaponVersion", 1);
+ GiveInventory("GoSpecial", 1);
+}
 
 
 script 391 ENTER

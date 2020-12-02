@@ -7,23 +7,70 @@ Actor ArmorBonusSpawner : CMEItemSpawner Replaces ArmorBonus
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleArmorBonusSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(256, "SpawnArmorShard", "SpawnBloodArmorShard", "SpawnHelmetArmorBonus", "SpawnHelmetArmorBonus2", "SpawnArmorShard2", "SpawnArmorShard3", "SpawnQuakeArmorShard")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(200, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(200, "SpawnBloodArmorShard")
+		TNT1 A 0 A_Jump(128, "SpawnHelmetArmorBonus")
+		TNT1 A 0 A_Jump(0, "SpawnHelmetArmorBonus2")
+		TNT1 A 0 A_Jump(0, "SpawnArmorShard2")
+		TNT1 A 0 A_Jump(0, "SpawnArmorShard3")
+		TNT1 A 0 A_Jump(0, "SpawnQuakeArmorShard")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(128, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(128, "SpawnBloodArmorShard")
+		TNT1 A 0 A_Jump(128, "SpawnHelmetArmorBonus")
+		TNT1 A 0 A_Jump(128, "SpawnHelmetArmorBonus2")
+		TNT1 A 0 A_Jump(0, "SpawnArmorShard2")
+		TNT1 A 0 A_Jump(0, "SpawnArmorShard3")
+		TNT1 A 0 A_Jump(0, "SpawnQuakeArmorShard")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(1, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(0, "SpawnBloodArmorShard")
+		TNT1 A 0 A_Jump(0, "SpawnHelmetArmorBonus")
+		TNT1 A 0 A_Jump(128, "SpawnHelmetArmorBonus2")
+		TNT1 A 0 A_Jump(200, "SpawnArmorShard2")
+		TNT1 A 0 A_Jump(200, "SpawnArmorShard3")
+		TNT1 A 0 A_Jump(0, "SpawnQuakeArmorShard")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(1, "SpawnArmorShard")
+		TNT1 A 0 A_Jump(0, "SpawnBloodArmorShard")
+		TNT1 A 0 A_Jump(0, "SpawnHelmetArmorBonus")
+		TNT1 A 0 A_Jump(128, "SpawnHelmetArmorBonus2")
+		TNT1 A 0 A_Jump(200, "SpawnArmorShard2")
+		TNT1 A 0 A_Jump(200, "SpawnArmorShard3")
+		TNT1 A 0 A_Jump(200, "SpawnQuakeArmorShard")
 	SpawnArmorShard:
 		TNT1 A 0 A_SpawnItemEx("DropedABonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnBloodArmorShard:
+		TNT1 A 0 A_SpawnItemEx("DropedBloodABonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnHelmetArmorBonus:
+		TNT1 A 0 A_SpawnItemEx("DropedHelmetABonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnHelmetArmorBonus2:
+		TNT1 A 0 A_SpawnItemEx("DropedHelmetABonus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnArmorShard2:
+		TNT1 A 0 A_SpawnItemEx("DropedABonus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnArmorShard3:
+		TNT1 A 0 A_SpawnItemEx("DropedABonus3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnQuakeArmorShard:
+		TNT1 A 0 A_SpawnItemEx("DropedQuakeABonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceArmorBonus:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
 	}
 }

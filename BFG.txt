@@ -14,7 +14,7 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 	Weapon.AmmoUse 40
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "CMECell"
-    Inventory.PickupSound "BFGREADY"
+    Inventory.PickupSound "BFGPICK"
 	//DamageType Desintegrate
 	+FORCEXYBILLBOARD
     Inventory.PickupMessage "You got the BFG-9000! FUCK YEAH!"
@@ -67,7 +67,8 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 		BFGG A 1 A_Lower
 		Loop
 	Select:
-		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+	TNT1 A 0 A_TakeInventory("RifleSelected",1)
+	TNT1 A 0 A_Takeinventory("FistsSelected",1)
 	TNT1 A 0 A_Takeinventory("SawSelected",1)
 	TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 	TNT1 A 0 A_Takeinventory("SSGSelected",1)

@@ -25,7 +25,24 @@ states
 		stop
 	}
 }
-
+ACTOR AutocannonMuzzle2
+{
+	Speed 0
+	PROJECTILE
+	+NOCLIP
+	+NOGRAVITY
+	Scale 4.0
+	Renderstyle Add
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 Radius_Quake(4, 2, 0, 6, 0)
+		PLMZ AA 1 BRIGHT A_SpawnItem("RedFlare")
+		TNT1 A 1
+		Stop
+	}
+}
 
 Actor RedFlare : Flare_General
 {
@@ -55,6 +72,12 @@ states
 		LENR BAB 1 bright
 		stop
 	}
+}
+
+Actor RedFlare3Flat : RedFlare3
+{
+XScale 0.5
+YScale 0.3
 }
 
 Actor BFGBigFlare : Flare_General
@@ -170,7 +193,24 @@ Actor YellowFlareArmor : YellowFlare
 scale 0.25
 }
 
+Actor PurpleFlareMedium : YellowFlare
+{
+Translation "0:255=%[0,0,0]:[1,0,1]"
+scale 0.20
+}
 
+
+Actor LensFlareExtra : Flare_General
+{
+alpha 0.45
+scale 0.5
+states
+	{
+	Spawn:
+		LENP A 5 bright
+		stop
+	}
+}
 Actor RedFlareMedium : RedFlare
 {
 scale 0.25
@@ -178,6 +218,10 @@ scale 0.25
 Actor RedFlareArmor : RedFlare
 {
 scale 0.3
+}
+Actor RedFlareMedium2 : RedFlare
+{
+scale 0.4
 }
 
 
@@ -794,6 +838,44 @@ states
 	{
 	Spawn:
 		LEYS B 3 bright
+		stop
+	}
+}
+
+Actor ItemFlareYellow : Flare_General
+{
++FORCEXYBILLBOARD
+-FORCEYBILLBOARD
+alpha 0.7
+xscale 0.2
+yscale 0.1
+states
+	{
+	Spawn:
+		LEYS A 1 bright
+		LEYS A 4 bright
+		stop
+	}
+}
+
+Actor ItemFlareBlue : ItemFlareYellow
+{
+states
+	{
+	Spawn:
+		LEYS B 1 bright
+		LEYS B 4 bright
+		stop
+	}
+}
+
+Actor ItemFlareRed : ItemFlareYellow
+{
+states
+	{
+	Spawn:
+		LEYS R 1 bright
+		LEYS R 4 bright
 		stop
 	}
 }

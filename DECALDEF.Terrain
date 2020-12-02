@@ -16,14 +16,22 @@ slider Drops
    DistX 0
    DistY -320
    SlideStart 0.01
-   SlideTime 15
+   SlideTime 5
+}
+
+
+stretcher waterstretcher
+{
+   GoalY 2.8
+   StretchStart 0
+   StretchTime 3
 }
 
 Combiner WaterDropEffect
 {
    LiquidFaderFast
    Drops
-   BrutalBloodSmearer
+   waterstretcher
 }
 
 decal WaterDrops1
@@ -33,7 +41,6 @@ decal WaterDrops1
 	x-scale 0.4
 	y-scale 0.4
 	randomflipx
-	animator Drops
 	animator WaterDropEffect
 }
 
@@ -42,9 +49,8 @@ decal WaterDrops2
 	pic WSPL1B
 	add 0.3
 	x-scale 0.5
-	y-scale 0.6
+	y-scale 0.8
 	randomflipx
-	animator Drops
 	animator WaterDropEffect
 }
 
@@ -55,7 +61,6 @@ decal WaterDrops3
 	x-scale 0.4
 	y-scale 0.5
 	randomflipx
-	animator Drops
 	animator WaterDropEffect
 }
 
@@ -137,9 +142,10 @@ decal GreenWaterSmear1
 	pic BSPLAT1
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "10 40 10"
+	add 0.9
+	shade "5 99 5"
 	randomflipx
+	fullbright
 	animator LiquidFader
 }
 
@@ -148,9 +154,10 @@ decal GreenWaterSmear2
 	pic BSPLAT2
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "10 40 10"
+	add 0.9
+	shade "5 99 5"
 	randomflipx
+	fullbright
 	animator LiquidFader
 }
 
@@ -159,9 +166,10 @@ decal GreenWaterSmear3
 	pic BSPLAT3
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "10 40 10"
+	add 0.9
+	shade "5 99 5"
 	randomflipx
+	fullbright
 	animator LiquidFader
 }
 
@@ -170,9 +178,10 @@ decal GreenWaterSmear4
 	pic BSPLAT4
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "10 40 10"
+	add 0.9
+	shade "5 99 5"
 	randomflipx
+	fullbright
 	animator LiquidFader
 }
 
@@ -188,6 +197,57 @@ decalgroup slimesplash
 
 
 
+decal BloodWaterSmear1
+{
+	pic BSPLAT1
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.6
+	shade "80 10 10"
+	randomflipx
+	animator LiquidFader
+}
+
+decal BloodWaterSmear2
+{
+	pic BSPLAT2
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.6
+	shade "80 10 10"
+	randomflipx
+	animator LiquidFader
+}
+
+decal BloodWaterSmear3
+{
+	pic BSPLAT3
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.6
+	shade "80 10 10"
+	randomflipx
+	animator LiquidFader
+}
+
+decal BloodWaterSmear4
+{
+	pic BSPLAT4
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.6
+	shade "80 10 10"
+	randomflipx
+	animator LiquidFader
+}
+
+decalgroup BloodWaterDecal
+{
+	BloodWaterSmear1	1
+	BloodWaterSmear2	1
+	BloodWaterSmear3	1
+	BloodWaterSmear4	1
+}
 
 
 

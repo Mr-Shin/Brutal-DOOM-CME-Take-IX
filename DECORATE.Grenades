@@ -228,23 +228,7 @@ TNT1 A 0 A_Explode(200,200, 0)
 		
 		
 
-ACTOR CMEGrenadeAmmo : Ammo
-{
-	Game Doom
-	Inventory.PickupMessage "Picked up a Grenade."
-	Inventory.Amount 1
-	Inventory.MaxAmount 10
-	Ammo.BackpackAmount 5
-	Ammo.BackpackMaxAmount 20
-	Inventory.Icon "GRNDA"
-	Scale 0.3
-	States
-	{
-	Spawn:
-		GRND H -1
-		Stop
-	}
-}
+
 
 Actor FakeGrenade: HandGrenade
 {

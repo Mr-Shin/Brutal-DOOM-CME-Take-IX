@@ -1,12 +1,12 @@
 ACTOR CMEClip2 : Ammo 
 {
 	Inventory.PickupMessage "Picked up a High Caliber Magazine."
-	Inventory.Amount 20
+	Inventory.Amount 10
 	Inventory.MaxAmount 450
-	Ammo.BackpackAmount 20
+	Ammo.BackpackAmount 10
 	Ammo.BackpackMaxAmount 900
 	Scale 0.9
-	Inventory.Icon "CLIPC0"
+	Inventory.Icon "CLIPD0"
 	Inventory.PickupSound "clip/pkup"
 	States
 	{
@@ -19,8 +19,8 @@ ACTOR CMEClip22 : CMEClip2
 {
 	Game DOOM
 	Inventory.PickupMessage "Picked up a High Caliber Magazine."
-	Inventory.Amount 20
-	Ammo.BackpackAmount 20
+	Inventory.Amount 15
+	Ammo.BackpackAmount 15
 	Inventory.PickupSound "clip/pkup"
 	States
 	{

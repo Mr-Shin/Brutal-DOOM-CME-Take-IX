@@ -50,11 +50,18 @@ flickerlight BFGEXPLO
 
 object Candelabra1
 {
-    frame CBRA { light BIGREDTORCH }
+    frame CBRA { light BIGREDTORCHNOSELF }
 }
 
+object BDECGasPipe
+{
+    frame TNT1{ light BIGREDTORCHNOSELF }
+}
 
-
+object BDECTorch
+{
+    frame TORC { light BIGREDTORCH }
+}
 
 
 object BurningZombie
@@ -71,9 +78,17 @@ object BurningZombie
 
 object Candlestick1
 {
-frame CAND { light SMALLREDTORCH }
+frame CAND { light CandleStickLight }
 }
 
+pulselight CandleStickLight
+{
+    color 1.0 0.3 0.0
+    size 55
+    secondarySize 50
+    interval 0.1
+    offset 0 10 0
+}
 
 pulselight FSKULL
 {
@@ -269,6 +284,16 @@ pulselight BIGREDTORCH
     offset 0 60 0
 }
 
+pulselight BIGREDTORCHNOSELF
+{
+    color 1.0 0.6 0.0
+    size 58
+    secondarySize 64
+    interval 0.1
+    offset 0 60 0
+	dontlightself 1
+}
+
 pulselight BIGREDTORCH128
 {
     color 1.0 0.3 0.0
@@ -381,11 +406,13 @@ object ShortTorch_Blue
 // Burning barrel
 pulselight FIREBARREL
 {
-    color 1.0 0.9 0.0
+    color 1.0 0.4 0.0
     size 58
     secondarySize 64
     interval 0.1
     offset 0 32 0
+	dontlightself 1
+	
 }
 
 object BurningBarrel1
@@ -393,10 +420,16 @@ object BurningBarrel1
     frame BURB { light FIREBARREL }
 }
 
-//object BigTreeInFlames
-//{
-//    frame TRE2 { light FIREBARREL }
-//}
+
+object BDECBurningPillar
+{
+    frame COL4 { light FIREBARREL }
+}
+
+object BDECburningtires
+{
+    frame SPDC { light FIREBARREL }
+}
 
 object TorchTreeInFlames
 {
@@ -983,12 +1016,82 @@ object HealthPlus
     frame BON1 { light BLUEITEM  }
 }
 
+object StrongHealthPlus
+{
+    frame BON4 { light CYANITEM  }
+}
+
+Object StrongHealthPlus2
+{
+	frame HFHB { light BLUEITEM }
+	frame HFHS { light BLUEITEM }
+}
+
+
+object SuperHealthPlus
+{
+    frame BON3 { light REDITEM  }
+}
+
+// Greater Soul Sphere
+pulselight GTRZOULSPHERE
+{
+    color 1.0 0.0 0.0
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object GreaterLifeSphere
+{
+    frame GZUL { light GTRZOULSPHERE }
+}
+
+
 object ArmorShard
 {
-    frame BON2B { light GREENITEM2  }
-	frame BON2C { light GREENITEM2  }
-	frame BON2D { light GREENITEM2  }
+    frame BON6B { light GREENITEM2  }
+	frame BON6C { light GREENITEM2  }
+	frame BON6D { light GREENITEM2  }
 }
+
+object ArmorShard2
+{
+    frame BON7B { light GREENITEM2  }
+	frame BON7C { light GREENITEM2  }
+	frame BON7D { light GREENITEM2  }
+}
+
+object ArmorShard3
+{
+    frame BON8B { light GREENITEM2  }
+	frame BON8C { light GREENITEM2  }
+	frame BON8D { light GREENITEM2  }
+}
+
+
+object BloodArmorShard
+{
+    frame BLABB { light REDITEM2  }
+	frame BLABC { light REDITEM2  }
+	frame BLABD { light REDITEM2  }
+}
+
+object HelmetArmorBonus
+{
+    frame HLMBB { light GREENITEM2  }
+	frame HLMBC { light GREENITEM2  }
+	frame HLMBD { light GREENITEM2  }
+}
+
+object HelmetArmorBonus2
+{
+    frame BON9B { light GREENITEM2  }
+	frame BON9C { light GREENITEM2  }
+	frame BON9D { light GREENITEM2  }
+}
+
 
 object Big_Tree
 {
@@ -1196,6 +1299,17 @@ pulselight GREENITEM2
 	dontlightself 1
 }
 
+pulselight REDITEM2
+{
+    color 1.0 0.0 0.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+	dontlightself 1
+}
+
+
 pulselight BLUEITEM
 {
     color 0.1 0.1 1.0
@@ -1205,7 +1319,24 @@ pulselight BLUEITEM
     offset 0 5 0
 }
 
+pulselight CYANITEM
+{
+    color 0.1 0.6 1.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
 
+
+pulselight REDITEM
+{
+    color 1.0 0.0 0.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
 
 
 
@@ -1323,50 +1454,9 @@ pointlight Flashlight3
 }
 
 
-object RedTorchVanilla
-{
-    frame TRED { light BIGREDTORCH }
-}
 
-object BlueTorchVanilla
-{
-    frame TBLU { light BIGBLUETORCH }
-}
 
-object GreenTorchVanilla
-{
-    frame TGRN { light BIGGREENTORCH }
-}
 
-object ShortRedTorchVanilla
-{
-    frame SMRT { light BIGREDTORCH }
-}
-
-object ShortBlueTorchVanilla
-{
-    frame SMBT { light BIGBLUETORCH }
-}
-
-object ShortGreenTorchVanilla
-{
-    frame SMGT { light BIGGREENTORCH }
-}
-
-object CandelabraVanilla
-{
-    frame CBRA { light BIGREDTORCH }
-}
-
-object BurningBarrelVanilla
-{
-    frame FCAN { light BIGREDTORCH }
-}
-
-object CandleVanilla
-{
-frame CAND { light SMALLREDTORCH }
-}
 
 // GL Definitions
 // Point Lights
@@ -2313,4 +2403,368 @@ Object FlashLightBeam12DDL
 	Frame TNT1A { Light FLASHLIGHT12DDL}
 	Frame TNT1B { Light FLASHLIGHT13DDL}
 	Frame TNT1C { Light FLASHLIGHT14DDL}
+}
+
+object RedTorchVanilla
+{
+    frame TRED { light BIGREDTORCH }
+}
+
+object BlueTorchVanilla
+{
+    frame TBLU { light BIGBLUETORCH }
+}
+
+object GreenTorchVanilla
+{
+    frame TGRN { light BIGGREENTORCH }
+}
+
+object ShortRedTorchVanilla
+{
+    frame SMRT { light BIGREDTORCH }
+}
+
+object ShortBlueTorchVanilla
+{
+    frame SMBT { light BIGBLUETORCH }
+}
+
+object ShortGreenTorchVanilla
+{
+    frame SMGT { light BIGGREENTORCH }
+}
+
+object CandelabraVanilla
+{
+    frame CBRA { light BIGREDTORCH }
+}
+
+object BurningBarrelVanilla
+{
+    frame FCAN { light BIGREDTORCH }
+}
+
+object CandleVanilla
+{
+frame CAND { light SMALLREDTORCH }
+}
+
+
+
+
+
+
+
+
+
+
+pOINTlight BIGORANGELAMP
+{
+    color 1.0 0.5 0.0
+    size 96
+    offset 0 -40 0
+}
+
+
+pOINTlight BIGWHITELAMP
+{
+    color 0.9 0.9 1.0
+    size 60
+    offset 0 -40 0
+}
+
+pOINTlight BIGWHITELAMP2
+{
+    color 0.9 0.9 1.0
+    size 50
+    offset 0 -100 0
+}
+
+
+pOINTlight BIGWHITELAMP3
+{
+    color 0.9 0.9 1.0
+    size 90
+    offset 0 -120 0
+}
+
+object BDECcagedlight2
+{
+frame SPDEF { light BIGORANGELAMP }
+}
+
+
+object BDECcagedlight
+{
+frame SPDEF { light BIGORANGELAMP }
+}
+
+
+
+object BDECCeilLampLong
+{
+frame SPDEH { light BIGWHITELAMP2 }
+}
+
+object BDECCeilLampLong2
+{
+frame SPDEH { light BIGWHITELAMP3 }
+}
+
+
+
+object BDECCeilLamp
+{
+frame SPDEG { light BIGWHITELAMP2 }
+}
+
+
+pointlight ALARMORANGELAMP
+{
+    color 1.0 0.5 0.0
+    size 64
+    offset 0 0 90
+}
+
+ 
+object BDECAlarm
+{
+    frame SPDE { light ALARMORANGELAMP }
+}
+
+
+
+
+pointlight BDECRedLightWall1L
+{
+    color 1.0 0.0 0.0
+    size 16
+    offset 0 0 0
+}
+
+ 
+object BDECRedLightWall1
+{
+    frame LIBD { light BDECRedLightWall1L }
+}
+
+
+
+
+pointlight BDECBlueLightWall1L
+{
+    color 0.0 0.0 1.0
+    size 16
+    offset 0 0 0
+}
+
+ 
+object BDECBlueLightWall1
+{
+    frame LIBD { light BDECBlueLightWall1L }
+}
+
+
+
+pointlight BDECBlueLightBig
+{
+    color 0.0 0.0 1.0
+    size 64
+    offset 0 0 0
+}
+
+ 
+object BDECBlueLight
+{
+    frame TNT1 { light BDECBlueLightBig }
+}
+
+
+
+
+pointlight BDECRedLightBig
+{
+    color 1.0 0.0 0.0
+    size 64
+    offset 0 0 0
+}
+
+ 
+object BDECRedLight
+{
+    frame TNT1 { light BDECRedLightBig }
+}
+
+
+pointlight BDECYellowLightBig
+{
+    color 1.0 1.0 0.0
+    size 64
+    offset 0 0 0
+}
+
+ 
+object BDECYellowLight
+{
+    frame TNT1 { light BDECYellowLightBig }
+}
+
+
+
+pointlight BDECYellowLightWall1L
+{
+    color 1.0 1.0 0.0
+    size 16
+    offset 0 0 0
+}
+
+ 
+object BDECYellowLightWall1
+{
+    frame LIBD { light BDECYellowLightWall1L }
+}
+
+
+
+pointlight BDECWhiteLightWall1L
+{
+    color 1.0 1.0 1.0
+    size 16
+    offset 0 0 0
+}
+
+ 
+object BDECWhiteLightWall1
+{
+    frame LIBD { light BDECWhiteLightWall1L }
+}
+
+
+pointlight BDECAdditiveRedLight
+{
+    color 1.0 0.0 0.0
+    size 64
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECAdditiveRedSmall
+{
+    color 1.0 0.0 0.0
+    size 16
+    offset 0 0 0
+	subtractive 1
+}
+
+
+pointlight BDECAdditiveRedLightLarge
+{
+    color 1.0 0.0 0.0
+    size 160
+    offset 0 0 0
+	subtractive 1
+}
+
+object BDECAddRedLight
+{
+    frame TNT1 { light BDECAdditiveRedLight }
+}
+
+object SmallRedLightBtmm
+{
+    frame XXX1 { light BDECAdditiveRedSmall }
+}
+
+
+object BDECAddRedLightLArge
+{
+    frame TNT1 { light BDECAdditiveRedLightLarge }
+}
+
+
+
+pointlight BDECAdditiveBlueLight
+{
+    color 0.0 0.0 1.0
+    size 80
+    offset 0 0 0
+	subtractive 1
+}
+
+object BDECAddBlueLight
+{
+    frame TNT1 { light BDECAdditiveBlueLight }
+}
+
+pointlight BDECAdditiveBlueLightLarge
+{
+    color 0.0 0.0 2.0
+    size 160
+    offset 0 0 0
+	subtractive 1
+}
+
+object BDECAddBlueLightLarge
+{
+    frame TNT1 { light BDECAdditiveBlueLightLarge }
+}
+
+object BigShaftOrange1
+{
+	frame XXX1 { light BDECOrangeLightShaft }
+}
+
+pointlight BDECOrangeLightShaft
+{
+    color 0.3 0.1 0.0
+    size 32
+	offset 0 0 -64
+}
+
+
+pointlight CannonFireLight
+{
+    color 1.0 0.8 0.2
+    size 160
+	offset 0 0 0
+}
+
+
+
+object AutocannonMuzzle2
+{
+	frame PLMZ { light CannonFireLight }
+}
+
+
+
+pointlight BDECBottomlessPit
+{
+    color 1.0 1.0 1.0
+    size 900
+    offset 0 0 0
+	subtractive 1
+}
+
+
+object PlutoniaBottomlessPit
+{
+	frame TNT1 { light BDECBottomlessPit }
+}
+
+
+
+object HDFlamesGFX1Slim
+{
+    frame NF1R { light BIGREDTORCHNOSELF }
+	frame NF2R { light BIGREDTORCHNOSELF }
+}
+
+
+
+object HDFlamesGFX1
+{
+    frame NF1R { light BIGREDTORCHNOSELF }
+	frame NF2R { light BIGREDTORCHNOSELF }
 }

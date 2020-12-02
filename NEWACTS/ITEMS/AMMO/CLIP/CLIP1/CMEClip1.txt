@@ -6,7 +6,7 @@ ACTOR CMEClip1 : Ammo
 	Inventory.MaxAmount 400
 	Ammo.BackpackAmount 5
 	Ammo.BackpackMaxAmount 800
-	Inventory.Icon "CLIPA0"
+	Inventory.Icon "CLIPB0"
 	Inventory.PickupSound "clip/pkup"
 	States
 	{

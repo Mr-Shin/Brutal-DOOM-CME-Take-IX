@@ -7,23 +7,105 @@ Actor ClipBoxSpawner : CMEItemSpawner Replaces ClipBox
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipBoxSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnClipBox")
+		TNT1 A 0 A_Jump(256, "SpawnClip1Box", "SpawnClip1Box2", "SpawnClip2Box", "SpawnClip2Box2", "SpawnClip2Box3", "SpawnClip2Box4", "SpawnClip2Box5", "SpawnClip2Box6", "SpawnClip2Box7", "SpawnAPBox1", "SpawnAPBox2", "SpawnAPBox3")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnClipBox")
+		TNT1 A 0 A_Jump(128, "SpawnClip1Box")
+		TNT1 A 0 A_Jump(128, "SpawnClip1Box2")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box2")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box3")
+		TNT1 A 0 A_Jump(86, "SpawnClip2Box4")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box5")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box6")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box7")
+		TNT1 A 0 A_Jump(0, "SpawnAPBox1")
+		TNT1 A 0 A_Jump(0, "SpawnAPBox2")
+		TNT1 A 0 A_Jump(0, "SpawnAPBox3")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnClipBox")
+		TNT1 A 0 A_Jump(96, "SpawnClip1Box")
+		TNT1 A 0 A_Jump(96, "SpawnClip1Box2")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box2")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box3")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box4")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box5")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box6")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box7")
+		TNT1 A 0 A_Jump(86, "SpawnAPBox1")
+		TNT1 A 0 A_Jump(0, "SpawnAPBox2")
+		TNT1 A 0 A_Jump(0, "SpawnAPBox3")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnClipBox")
+		TNT1 A 0 A_Jump(0, "SpawnClip1Box")
+		TNT1 A 0 A_Jump(0, "SpawnClip1Box2")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box")
+		TNT1 A 0 A_Jump(200, "SpawnClip2Box2")
+		TNT1 A 0 A_Jump(200, "SpawnClip2Box3")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box4")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box5")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box6")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box7")
+		TNT1 A 0 A_Jump(128, "SpawnAPBox1")
+		TNT1 A 0 A_Jump(128, "SpawnAPBox2")
+		TNT1 A 0 A_Jump(86, "SpawnAPBox3")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnClipBox")
-	SpawnClipBox:
-		TNT1 A 0 A_SpawnItemEx("DropedClipBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		TNT1 A 0 A_Jump(0, "SpawnClip1Box")
+		TNT1 A 0 A_Jump(0, "SpawnClip1Box2")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box2")
+		TNT1 A 0 A_Jump(128, "SpawnClip2Box3")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box4")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box5")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box6")
+		TNT1 A 0 A_Jump(0, "SpawnClip2Box7")
+		TNT1 A 0 A_Jump(200, "SpawnAPBox1")
+		TNT1 A 0 A_Jump(200, "SpawnAPBox2")
+		TNT1 A 0 A_Jump(200, "SpawnAPBox3")
+	SpawnClip1Box:
+		TNT1 A 0 A_SpawnItemEx("DropedClip1Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnClip1Box2:
+		TNT1 A 0 A_SpawnItemEx("DropedClip1Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box2:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box3:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box4:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box5:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box6:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2Box7:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2Box7",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnAPBox1:
+		TNT1 A 0 A_SpawnItemEx("DropedAPBox1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnAPBox2:
+		TNT1 A 0 A_SpawnItemEx("DropedAPBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnAPBox3:
+		TNT1 A 0 A_SpawnItemEx("DropedAPBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceClipBox:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop	
 	}
 }

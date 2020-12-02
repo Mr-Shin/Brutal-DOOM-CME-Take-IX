@@ -61,7 +61,8 @@ ACTOR Rocket_Launcher : CMEWeapon
 	Goto Ready3
 		
 	Select:
-	
+			TNT1 A 0 A_TakeInventory("RifleSelected",1)
+
 	TNT1 A 0 A_Takeinventory("FistsSelected",1)
 	TNT1 A 0 A_Takeinventory("SawSelected",1)
 	TNT1 A 0 A_Takeinventory("ShotgunSelected",1)

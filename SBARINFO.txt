@@ -141,7 +141,7 @@ InInventory not sbartype2, 1
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 166, 176, 0;
 	
 	//INFRARED
-	drawnumber 4, SMALLFONT, Blue, PowerupTime Infrared, whennotzero, 166, 168, 0;
+	drawnumber 4, SMALLFONT, Blue, PowerupTime NightVisionGiver, whennotzero, 166, 168, 0;
 	
 		
 		
@@ -208,7 +208,7 @@ statusbar normal // Standard Doom Status bar
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 60, 160, 0;
 	
 	//INFRARED
-	drawnumber 4, SMALLFONT, White, PowerupTime Infrared, whennotzero, 80, 160, 0;
+	drawnumber 4, SMALLFONT, White, PowerupTime NightVisionGiver, whennotzero, 80, 160, 0;
 	
 	
 	//GRENADES

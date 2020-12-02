@@ -7,23 +7,71 @@ Actor ClipSpawner : CMEItemSpawner Replaces Clip
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleClipSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnClip")
+		TNT1 A 0 A_Jump(256, "SpawnClip2", "SpawnClip1", "SpawnClip12", "SpawnClip22", "SpawnAPBullets", "SpawnAPChain", "Spawn50CalAmmo")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnClip")
+		TNT1 A 0 A_Jump(128,"SpawnClip2")
+		TNT1 A 0 A_Jump(192,"SpawnClip1")
+		TNT1 A 0 A_Jump(192,"SpawnClip12")
+		TNT1 A 0 A_Jump(0,"SpawnClip22")
+		TNT1 A 0 A_Jump(0,"SpawnAPBullets")
+		TNT1 A 0 A_Jump(0,"SpawnAPChain")
+		TNT1 A 0 A_Jump(0,"Spawn50CalAmmo")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnClip")
+		TNT1 A 0 A_Jump(128,"SpawnClip2")
+		TNT1 A 0 A_Jump(86,"SpawnClip1")
+		TNT1 A 0 A_Jump(128,"SpawnClip12")
+		TNT1 A 0 A_Jump(128,"SpawnClip22")
+		TNT1 A 0 A_Jump(0,"SpawnAPBullets")
+		TNT1 A 0 A_Jump(0,"SpawnAPChain")
+		TNT1 A 0 A_Jump(0,"Spawn50CalAmmo")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnClip")
+		TNT1 A 0 A_Jump(32,"SpawnClip2")
+		TNT1 A 0 A_Jump(128,"SpawnClip1")
+		TNT1 A 0 A_Jump(86,"SpawnClip12")
+		TNT1 A 0 A_Jump(100,"SpawnClip22")
+		TNT1 A 0 A_Jump(128,"SpawnAPBullets")
+		TNT1 A 0 A_Jump(128,"SpawnAPChain")
+		TNT1 A 0 A_Jump(128,"Spawn50CalAmmo")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnClip")
-	SpawnClip:
-		TNT1 A 0 A_SpawnItemEx("DropedClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		TNT1 A 0 A_Jump(32,"SpawnClip2")
+		TNT1 A 0 A_Jump(128,"SpawnClip1")
+		TNT1 A 0 A_Jump(86,"SpawnClip12")
+		TNT1 A 0 A_Jump(0,"SpawnClip22")
+		TNT1 A 0 A_Jump(192,"SpawnAPBullets")
+		TNT1 A 0 A_Jump(192,"SpawnAPChain")
+		TNT1 A 0 A_Jump(64,"Spawn50CalAmmo")
+	SpawnClip1:
+		TNT1 A 0 A_SpawnItemEx("DropedClip1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnClip12:
+		TNT1 A 0 A_SpawnItemEx("DropedClip12",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip2:
+		TNT1 A 0 A_SpawnItemEx("DropedClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnClip22:
+		TNT1 A 0 A_SpawnItemEx("DropedClip22",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnAPBullets:
+		TNT1 A 0 A_SpawnItemEx("DropedAPBullets",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnAPChain:
+		TNT1 A 0 A_SpawnItemEx("DropedAPChain",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	Spawn50CalAmmo:
+		TNT1 A 0 A_SpawnItemEx("Droped50CalAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceClip:
+		TNT1 A 1
+	    TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
 	}
 }

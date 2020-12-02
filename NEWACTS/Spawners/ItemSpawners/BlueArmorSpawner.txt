@@ -7,23 +7,77 @@ Actor BlueArmorSpawner : CMEItemSpawner Replaces BlueArmor
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleBlueArmorSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnBlueArmor")
+		TNT1 A 0 A_Jump(256, "SpawnHeavyVest", "SpawnHeavyChestplate", "SpawnHeavyArmor", "SpawnHeavyTechArmor", "SpawnDemonVest", "SpawnDemonArmor", "SpawnDemonArmor2", "SpawnEliteArmor")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnBlueArmor")
+		TNT1 A 0 A_Jump(200, "SpawnHeavyVest")
+		TNT1 A 0 A_Jump(200, "SpawnHeavyChestplate")
+		TNT1 A 0 A_Jump(128, "SpawnHeavyArmor")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(0, "SpawnDemonVest")
+		TNT1 A 0 A_Jump(0, "SpawnDemonArmor")
+		TNT1 A 0 A_Jump(0, "SpawnDemonArmor2")
+		TNT1 A 0 A_Jump(0, "SpawnEliteArmor")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnBlueArmor")
+		TNT1 A 0 A_Jump(200, "SpawnHeavyVest")
+		TNT1 A 0 A_Jump(200, "SpawnHeavyChestplate")
+		TNT1 A 0 A_Jump(200, "SpawnHeavyArmor")
+		TNT1 A 0 A_Jump(128, "SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(0, "SpawnDemonVest")
+		TNT1 A 0 A_Jump(0, "SpawnDemonArmor")
+		TNT1 A 0 A_Jump(0, "SpawnDemonArmor2")
+		TNT1 A 0 A_Jump(0, "SpawnEliteArmor")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnBlueArmor")
+		TNT1 A 0 A_Jump(1, "SpawnHeavyVest")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyChestplate")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyArmor")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(200, "SpawnDemonVest")
+		TNT1 A 0 A_Jump(128, "SpawnDemonArmor")
+		TNT1 A 0 A_Jump(0, "SpawnDemonArmor2")
+		TNT1 A 0 A_Jump(0, "SpawnEliteArmor")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnBlueArmor")
-	SpawnBlueArmor:
+		TNT1 A 0 A_Jump(1, "SpawnHeavyVest")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyChestplate")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyArmor")
+		TNT1 A 0 A_Jump(0, "SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(200, "SpawnDemonVest")
+		TNT1 A 0 A_Jump(200, "SpawnDemonArmor")
+		TNT1 A 0 A_Jump(200, "SpawnDemonArmor2")
+		TNT1 A 0 A_Jump(200, "SpawnEliteArmor")
+	SpawnHeavyVest:
 		TNT1 A 0 A_SpawnItemEx("DropedHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnHeavyChestplate:
+		TNT1 A 0 A_SpawnItemEx("DropedHeavyChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnHeavyArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnHeavyTechArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedHeavyTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnDemonVest:
+		TNT1 A 0 A_SpawnItemEx("DropedDemonVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnDemonArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedDemonArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnDemonArmor2:
+		TNT1 A 0 A_SpawnItemEx("DropedDemonArmor2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnEliteArmor:
+		TNT1 A 0 A_SpawnItemEx("DropedEliteArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceBlueArmor:
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx("HeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+	Stop
 	}
 }

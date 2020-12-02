@@ -7,23 +7,49 @@ Actor MedikitSpawner : CMEItemSpawner Replaces Medikit
 		TNT1 A 0
 		TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
 		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleMedikitSpawn",0)
 	Deciding:
 		TNT1 A 1
 		loop
 	DiceRandom:
-		TNT1 A 0 A_Jump(256, "SpawnMedikit")
+		TNT1 A 0 A_Jump(256, "SpawnMedikit", "SpawnMedikit2", "SpawnMedikit3", "SpawnMedikit4")
 		Stop	
 	DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
 		DiceTier1:
-		TNT1 A 0 A_Jump(256, "SpawnMedikit")
+		TNT1 A 0 A_Jump(200, "SpawnMedikit")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit2")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit3")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit4")
 		DiceTier2:
-		TNT1 A 0 A_Jump(256, "SpawnMedikit")
+		TNT1 A 0 A_Jump(1, "SpawnMedikit")
+		TNT1 A 0 A_Jump(200, "SpawnMedikit2")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit3")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit4")
 		DiceTier3:
-		TNT1 A 0 A_Jump(256, "SpawnMedikit")
+		TNT1 A 0 A_Jump(1, "SpawnMedikit")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit2")
+		TNT1 A 0 A_Jump(200, "SpawnMedikit3")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit4")
 		DiceTier4:
-		TNT1 A 0 A_Jump(256, "SpawnMedikit")
+		TNT1 A 0 A_Jump(1, "SpawnMedikit")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit2")
+		TNT1 A 0 A_Jump(0, "SpawnMedikit3")
+		TNT1 A 0 A_Jump(200, "SpawnMedikit4")
 	SpawnMedikit:
 		TNT1 A 0 A_SpawnItemEx("DropedMedikit",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
 		Goto Waiting
+	SpawnMedikit2:
+		TNT1 A 0 A_SpawnItemEx("DropedMedikit2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnMedikit3:
+		TNT1 A 0 A_SpawnItemEx("DropedMedikit3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	SpawnMedikit4:
+		TNT1 A 0 A_SpawnItemEx("DropedMedikit4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Goto Waiting
+	ReplaceMedikit:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Medikit2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
 	}
 }
